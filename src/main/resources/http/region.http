@@ -6,7 +6,7 @@ Content-Type: application/json
   "nameUz": "Yevropa",
   "nameRu": "Европа",
   "nameEn": "Europe",
-  "orderNumber": "2"
+  "orderNumber": 2
 }
 
 ### deleteById

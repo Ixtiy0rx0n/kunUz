@@ -3,8 +3,7 @@ package org.example.kunuz.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.kunuz.enums.ProfileRole;
-import org.example.kunuz.enums.ProfileStatus;
+
 
 import java.time.LocalDateTime;
 
