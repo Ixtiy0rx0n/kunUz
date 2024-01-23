@@ -1,0 +1,22 @@
+### Create
+POST http://localhost:8080/articletype/create
+Content-Type: application/json
+
+{
+  "nameUz": "Muharrir",
+  "nameRu": "редактор",
+  "nameEn": "Editor",
+  "orderNumber": "2"
+}
+
+### updateById
+
+PUT http://localhost:8080/articletype/update/3
+Content-Type: application/json
+
+{
+  "nameUz": "Dolzarb",
+  "nameEn": "Actual",
+  "nameRu": "Актуальные ",
+  "orderNumber": 3
+}
