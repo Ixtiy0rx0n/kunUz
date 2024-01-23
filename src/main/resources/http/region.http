@@ -1,0 +1,16 @@
+### create
+POST localhost:8080/region/create
+Content-Type: application/json
+
+{
+  "nameUz": "Yevropa",
+  "nameRu": "Европа",
+  "nameEn": "Europe",
+  "orderNumber": "2"
+}
+
+### deleteById
+DELETE http://localhost:8080/region/3
+
+### all
+GET http://localhost:8080/region/all

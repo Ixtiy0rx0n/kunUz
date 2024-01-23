@@ -20,3 +20,9 @@ Content-Type: application/json
   "nameRu": "Актуальные ",
   "orderNumber": 3
 }
+
+### getAll
+GET http://localhost:8080/articletype/all?page=1&size10
+
+### getByLang
+GET http://localhost:8080/articletype/getByLang?id=1&lang=uz
