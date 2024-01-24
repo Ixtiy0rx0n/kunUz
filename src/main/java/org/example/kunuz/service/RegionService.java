@@ -3,12 +3,14 @@ package org.example.kunuz.service;
 import org.example.kunuz.dto.RegionDTO;
 
 import org.example.kunuz.entity.RegionEntity;
+import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.exp.AppBadException;
 import org.example.kunuz.repository.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class RegionService {
     @Autowired
     private RegionRepository regionRepository;
+
     public RegionDTO create(RegionDTO dto) {
         RegionEntity entity = new RegionEntity();
         entity.setNameUz(dto.getNameUz());
@@ -30,30 +33,27 @@ public class RegionService {
     }
 
     public RegionDTO updateById(Integer id, RegionDTO dto) {
-        Optional<RegionEntity> optional = regionRepository.findById(id);
-        if (optional.isEmpty()) {
-            throw new AppBadException("Region not found");
-        }
-        RegionEntity entity = optional.get();
+        RegionEntity entity = get(id);
         entity.setNameUz(dto.getNameUz());
         entity.setNameRu(dto.getNameRu());
         entity.setNameEn(dto.getNameEn());
         entity.setOrderNumber(dto.getOrderNumber());
         regionRepository.save(entity);
         dto.setId(entity.getId());
-        dto.setCreatedDate(entity.getCreatedDate());
-        dto.setUpdatedDate(entity.getUpdatedDate());
         return dto;
     }
 
-    public void deleteById(Integer id){
-        regionRepository.deleteById(id);
+    public Boolean deleteById(Integer id) {
+        RegionEntity regionEntity = get(id);
+        int effectedRows = regionRepository.delete(id);
+        return true;
     }
+
     public PageImpl getAll(Integer page, Integer size) {
         Sort sort = Sort.by(Sort.Direction.DESC, "createdDate");
 
         Pageable paging = PageRequest.of(page - 1, size, sort);
-        Page<RegionEntity> articleTypePage = regionRepository.findAll(paging);
+        Page<RegionEntity> articleTypePage = regionRepository.findAllByVisible(paging,true);
         List<RegionEntity> entityList = articleTypePage.getContent();
         Long totalElement = articleTypePage.getTotalElements();
 
@@ -65,37 +65,32 @@ public class RegionService {
         return new PageImpl<>(dtoList, paging, totalElement);
     }
 
-    public Optional<RegionDTO> getByLang(Integer id, String lang) {
-        Optional<RegionEntity> optional = regionRepository.findById(id);
-
-        if (optional.isEmpty()) {
-            throw new AppBadException("Lang Not found ❌❌❌");
-        }
-        RegionEntity entity = optional.get();
-        RegionDTO dto = new RegionDTO();
-        dto.setId(entity.getId());
-        dto.setCreatedDate(entity.getCreatedDate());
-        dto.setOrderNumber(entity.getOrderNumber());
-
-        switch (lang) {
-            case "uz" -> dto.setNameUz(entity.getNameUz());
-            case "ru" -> dto.setNameRu(entity.getNameRu());
-            case "en" -> dto.setNameEn(entity.getNameEn());
-            default -> dto.setNameUz(entity.getNameUz());
+    public List<RegionDTO> getByLang(AppLanguage language) {
+        List<RegionDTO> dtoList = new LinkedList<>();
+        Iterable<RegionEntity> all = regionRepository.findAll();
+        for (RegionEntity entity : all) {
+            RegionDTO dto = new RegionDTO();
+            dto.setId(entity.getId());
+            switch (language) {
+                case uz -> dto.setName(entity.getNameUz());
+                case ru -> dto.setName(entity.getNameRu());
+                default -> dto.setName(entity.getNameEn());
+            }
+            dtoList.add(dto);
         }
 
-
-        return Optional.of(dto);
+        return dtoList;
 
     }
 
 
 
 
-
-
-
-
+    public RegionEntity get(Integer id) {
+        return regionRepository.findById(id).orElseThrow(() -> {
+            throw new AppBadException("Region not found");
+        });
+    }
 
     public RegionDTO toDTO(RegionEntity entity) {
         RegionDTO dto = new RegionDTO();
@@ -107,4 +102,5 @@ public class RegionService {
         dto.setCreatedDate(entity.getCreatedDate());
         return dto;
     }
+
 }

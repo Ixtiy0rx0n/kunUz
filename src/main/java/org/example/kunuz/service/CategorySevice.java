@@ -47,7 +47,7 @@ public class CategorySevice {
     }
 
     public void deleteById(Integer id){
-        categoryRepository.deleteById(id);
+        categoryRepository.delete(id);
     }
 
     public PageImpl getAll(Integer page, Integer size) {

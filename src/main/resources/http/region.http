@@ -3,9 +3,9 @@ POST localhost:8080/region/create
 Content-Type: application/json
 
 {
-  "nameUz": "Yevropa",
-  "nameRu": "Европа",
-  "nameEn": "Europe",
+  "nameUz": "Sirdaryo uz",
+  "nameRu": "Sirdaryo ru",
+  "nameEn": "Sirdaryo en",
   "orderNumber": 2
 }
 
@@ -14,3 +14,6 @@ DELETE http://localhost:8080/region/3
 
 ### all
 GET http://localhost:8080/region/all
+
+### getByLan
+GET http://localhost:8080/region/getByLang?lang=uz

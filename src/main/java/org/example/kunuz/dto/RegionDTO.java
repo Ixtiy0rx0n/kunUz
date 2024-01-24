@@ -15,6 +15,7 @@ public class RegionDTO {
     private String nameUz;
     private String nameRu;
     private String nameEn;
+    private String name;
     private Integer orderNumber;
     protected LocalDateTime createdDate;
     protected LocalDateTime updatedDate;

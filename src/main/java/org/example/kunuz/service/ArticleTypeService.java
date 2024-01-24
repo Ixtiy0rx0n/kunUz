@@ -47,7 +47,7 @@ public class ArticleTypeService {
     }
 
     public void deleteById(Integer id) {
-        articleTypeRepository.deleteById(id);
+        articleTypeRepository.delete(id);
 
     }
 

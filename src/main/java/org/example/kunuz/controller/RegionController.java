@@ -2,12 +2,14 @@ package org.example.kunuz.controller;
 
 import org.example.kunuz.dto.ArticleTypeDTO;
 import org.example.kunuz.dto.RegionDTO;
+import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -43,8 +45,7 @@ public class RegionController {
 
 
     @GetMapping("/getByLang")
-    public ResponseEntity<Optional<RegionDTO>> getByLang(@RequestParam("id") Integer id,
-                                                         @RequestParam("lang") String lang){
-        return ResponseEntity.ok(regionService.getByLang(id,lang));
+    public ResponseEntity<List<RegionDTO>> getByLang(@RequestParam(value = "lang", defaultValue = "uz")AppLanguage language){
+        return ResponseEntity.ok(regionService.getByLang(language));
     }
 }
