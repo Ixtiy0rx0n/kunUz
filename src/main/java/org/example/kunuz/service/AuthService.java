@@ -24,6 +24,7 @@ public class AuthService {
         }
         ProfileEntity entity = optional.get();
         ProfileDTO dto = new ProfileDTO();
+        dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setRole(entity.getRole());
         dto.setSurname(entity.getSurname());

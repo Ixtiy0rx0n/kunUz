@@ -1,12 +1,12 @@
 ### create
 POST localhost:8080/region/create
 Content-Type: application/json
-
+profileRole: ADMIN
 {
-  "nameUz": "Sirdaryo uz",
-  "nameRu": "Sirdaryo ru",
-  "nameEn": "Sirdaryo en",
-  "orderNumber": 2
+  "nameUz": "Sam uz",
+  "nameRu": "sam ru",
+  "nameEn": "sam en",
+  "orderNumber": 4
 }
 
 ### deleteById
