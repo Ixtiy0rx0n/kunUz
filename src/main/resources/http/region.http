@@ -1,7 +1,8 @@
 ### create
 POST localhost:8080/region/create
 Content-Type: application/json
-profileRole: ADMIN
+Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYxOTU0MTksImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3MDYyODE4MTksImlzcyI6Ikt1blV6VGVzdCJ9.H76wKI-5IHTUqhAM7w3qhPBOwj5PgI8MZE7SQkHhgGgxSlz3fRvs2GjgSrpgudjsxZyVnmmckQOBLnYdKJH7zw
+
 {
   "nameUz": "Sam uz",
   "nameRu": "sam ru",

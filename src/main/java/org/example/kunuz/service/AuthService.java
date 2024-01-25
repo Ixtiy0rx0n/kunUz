@@ -5,6 +5,7 @@ import org.example.kunuz.dto.ProfileDTO;
 import org.example.kunuz.entity.ProfileEntity;
 import org.example.kunuz.exp.AppBadException;
 import org.example.kunuz.repository.ProfileRepository;
+import org.example.kunuz.util.JWTUtil;
 import org.example.kunuz.util.MDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +25,11 @@ public class AuthService {
         }
         ProfileEntity entity = optional.get();
         ProfileDTO dto = new ProfileDTO();
-        dto.setId(entity.getId());
+
         dto.setName(entity.getName());
         dto.setRole(entity.getRole());
         dto.setSurname(entity.getSurname());
+        dto.setJwt(JWTUtil.encode(entity.getId(), entity.getRole()));
         return dto;
     }
 

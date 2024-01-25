@@ -1,10 +1,12 @@
 package org.example.kunuz.controller;
 
 import org.example.kunuz.dto.ArticleTypeDTO;
+import org.example.kunuz.dto.JwtDTO;
 import org.example.kunuz.dto.RegionDTO;
 import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.service.RegionService;
+import org.example.kunuz.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpStatus;
@@ -22,8 +24,9 @@ public class RegionController {
 
     @PostMapping("/create")// Region Yaratish
     public ResponseEntity<RegionDTO> create(@RequestBody RegionDTO dto,
-                                            @RequestHeader(value = "profileID", required = true) Integer prId){
-        if (!prId. equals(ProfileRole.ADMIN)){
+                                            @RequestHeader(value = "Authorization") String jwt){
+        JwtDTO jwtDTO = JWTUtil.decode(jwt);
+        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
         RegionDTO result =  regionService.create(dto);
