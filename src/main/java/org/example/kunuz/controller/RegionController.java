@@ -35,26 +35,46 @@ public class RegionController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<RegionDTO> updateById(@RequestBody RegionDTO dto,
-                                                @PathVariable("id") Integer id){
+                                                @PathVariable("id") Integer id,
+                                                @RequestHeader(value = "Authorization") String jwt){
+        JwtDTO jwtDTO = JWTUtil.decode(jwt);
+        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
         return ResponseEntity.ok(regionService.updateById(id,dto));
     }
 
     @DeleteMapping("/{id}")
-    public Boolean deleteById(@PathVariable("id") Integer id){
+    public Boolean deleteById(@PathVariable("id") Integer id,
+                              @RequestHeader(value = "Authorization") String jwt){
+        JwtDTO jwtDTO = JWTUtil.decode(jwt);
+        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build().hasBody();
+        }
         regionService.deleteById(id);
         return true;
     }
 
     @GetMapping("/all")
     public ResponseEntity<PageImpl<RegionDTO>> getAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
-                                                      @RequestParam(value = "size", defaultValue = "10") Integer size){
+                                                      @RequestParam(value = "size", defaultValue = "10") Integer size,
+                                                      @RequestHeader(value = "Authorization") String jwt){
+        JwtDTO jwtDTO = JWTUtil.decode(jwt);
+        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
         return ResponseEntity.ok(regionService.getAll(page,size));
 
     }
 
 
     @GetMapping("/getByLang")
-    public ResponseEntity<List<RegionDTO>> getByLang(@RequestParam(value = "lang", defaultValue = "uz")AppLanguage language){
+    public ResponseEntity<List<RegionDTO>> getByLang(@RequestParam(value = "lang",defaultValue = "uz")
+                                                         AppLanguage language){
         return ResponseEntity.ok(regionService.getByLang(language));
     }
+
+
+
+
 }

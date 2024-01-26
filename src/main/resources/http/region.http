@@ -11,7 +11,9 @@ Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYxOTU0MTksImlkIjoxLCJyb2xlIjoi
 }
 
 ### deleteById
-DELETE http://localhost:8080/region/3
+DELETE http://localhost:8080/region/7
+Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYyNzM2ODMsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3MDYzNjAwODMsImlzcyI6Ikt1blV6VGVzdCJ9.MEhVF5MYAxqlzqtBjTp3MVBo3IeSfcMz0TBahquxn4UvvfNvOZckC_72UH3uSdzbhRZdPgqemFZX6LqqMkGBUQ
+
 
 ### all
 GET http://localhost:8080/region/all

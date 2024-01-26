@@ -1,0 +1,33 @@
+### Create
+POST http://localhost:8080/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYyNzM2ODMsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3MDYzNjAwODMsImlzcyI6Ikt1blV6VGVzdCJ9.MEhVF5MYAxqlzqtBjTp3MVBo3IeSfcMz0TBahquxn4UvvfNvOZckC_72UH3uSdzbhRZdPgqemFZX6LqqMkGBUQ
+
+{
+  "name": "Ixtiyorxon",
+  "surname": "Xabibulloyev",
+  "email": "ixti@gmail.com",
+  "password": "12345",
+  "status": "ACTIVE",
+  "role": "USER",
+  "visible": true
+}
+
+### Update
+PUT http://localhost:8080/profile/update/2
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYyNzM2ODMsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3MDYzNjAwODMsImlzcyI6Ikt1blV6VGVzdCJ9.MEhVF5MYAxqlzqtBjTp3MVBo3IeSfcMz0TBahquxn4UvvfNvOZckC_72UH3uSdzbhRZdPgqemFZX6LqqMkGBUQ
+
+{
+  "name": "Shukur",
+  "surname": "Shukurov",
+  "email": "Shukur@GMail.com",
+  "password": "2929",
+  "status": "BLOCK",
+  "role": "ADMIN",
+  "visible": true
+}
+
+### DELETE
+DELETE http://localhost:8080/profile/2
+Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYyNzM2ODMsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3MDYzNjAwODMsImlzcyI6Ikt1blV6VGVzdCJ9.MEhVF5MYAxqlzqtBjTp3MVBo3IeSfcMz0TBahquxn4UvvfNvOZckC_72UH3uSdzbhRZdPgqemFZX6LqqMkGBUQ
