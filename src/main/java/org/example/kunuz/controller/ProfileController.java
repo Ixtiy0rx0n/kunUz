@@ -18,9 +18,9 @@ public class ProfileController {
     @Autowired
     private ProfileService profileService;
 
-@PostMapping("")
+    @PostMapping("")
     public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto,
-                                                @RequestHeader(value = "Authorization") String jwt){
+                                             @RequestHeader(value = "Authorization") String jwt){
         JwtDTO jwtDTO = JWTUtil.decode(jwt);
         if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
@@ -35,7 +35,7 @@ public class ProfileController {
         if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
-        return ResponseEntity.ok(profileService.updateById(id,dto));
+        return ResponseEntity.ok(profileService.updateById(jwtDTO.getId(),dto));
     }
 
     @GetMapping("/all")

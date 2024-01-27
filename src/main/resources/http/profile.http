@@ -4,10 +4,10 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYyNzM2ODMsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3MDYzNjAwODMsImlzcyI6Ikt1blV6VGVzdCJ9.MEhVF5MYAxqlzqtBjTp3MVBo3IeSfcMz0TBahquxn4UvvfNvOZckC_72UH3uSdzbhRZdPgqemFZX6LqqMkGBUQ
 
 {
-  "name": "Ixtiyorxon",
-  "surname": "Xabibulloyev",
-  "email": "ixti@gmail.com",
-  "password": "12345",
+  "name": "Shukur",
+  "surname": "Shukurov",
+  "email": "Shukurov@gmail.com",
+  "password": "2929",
   "status": "ACTIVE",
   "role": "USER",
   "visible": true
@@ -20,11 +20,11 @@ Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYyNzM2ODMsImlkIjoxLCJyb2xlIjoi
 
 {
   "name": "Shukur",
-  "surname": "Shukurov",
-  "email": "Shukur@GMail.com",
-  "password": "2929",
-  "status": "BLOCK",
-  "role": "ADMIN",
+  "surname": "Abduqodir",
+  "email": "avaz@GMail.com",
+  "password": "629",
+  "status": "ACTIVE",
+  "role": "USER",
   "visible": true
 }
 
