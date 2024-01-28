@@ -1,5 +1,6 @@
 package org.example.kunuz.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.example.kunuz.dto.ArticleTypeDTO;
 import org.example.kunuz.dto.JwtDTO;
 import org.example.kunuz.dto.RegionDTO;
@@ -22,18 +23,20 @@ public class RegionController {
     @Autowired
     private RegionService regionService;
 
-    @PostMapping("/create")// Region Yaratish
+    @PostMapping("/adm/create")// Region Yaratish
     public ResponseEntity<RegionDTO> create(@RequestBody RegionDTO dto,
-                                            @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
+                                            HttpServletRequest request){
+        Integer id = (Integer) request.getAttribute("id");
+        ProfileRole role = (ProfileRole) request.getAttribute("role");
+
+        if (!role.equals(ProfileRole.ADMIN)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
-        RegionDTO result =  regionService.create(dto);
-        return ResponseEntity.ok(result);
+
+        return ResponseEntity.ok(regionService.create(dto));
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/adm/update/{id}")
     public ResponseEntity<RegionDTO> updateById(@RequestBody RegionDTO dto,
                                                 @PathVariable("id") Integer id,
                                                 @RequestHeader(value = "Authorization") String jwt){
@@ -44,7 +47,7 @@ public class RegionController {
         return ResponseEntity.ok(regionService.updateById(id,dto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/adm/{id}")
     public Boolean deleteById(@PathVariable("id") Integer id,
                               @RequestHeader(value = "Authorization") String jwt){
         JwtDTO jwtDTO = JWTUtil.decode(jwt);
@@ -55,7 +58,7 @@ public class RegionController {
         return true;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/adm/all")
     public ResponseEntity<PageImpl<RegionDTO>> getAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                       @RequestParam(value = "size", defaultValue = "10") Integer size,
                                                       @RequestHeader(value = "Authorization") String jwt){
