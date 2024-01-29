@@ -1,13 +1,13 @@
 package org.example.kunuz.controller;
 
-import org.example.kunuz.dto.JwtDTO;
+import jakarta.servlet.http.HttpServletRequest;
+import org.example.kunuz.dto.CreatedProfileDTO;
 import org.example.kunuz.dto.ProfileDTO;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.service.ProfileService;
-import org.example.kunuz.util.JWTUtil;
+import org.example.kunuz.util.HttpRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,43 +20,39 @@ public class ProfileController {
 
     @PostMapping("")
     public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto,
-                                             @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                    HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         return ResponseEntity.ok(profileService.create(dto));
     }
-    @PutMapping("/update/{id}")
-    public ResponseEntity<ProfileDTO> updateById(@RequestBody ProfileDTO dto,
+    @PutMapping("/updateAdmin/{id}")
+    public ResponseEntity<ProfileDTO> updateAdmin(@RequestBody ProfileDTO dto,
                                                 @PathVariable("id") Integer id,
-                                                @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
-        return ResponseEntity.ok(profileService.updateById(jwtDTO.getId(),dto));
+                                                 HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);
+        return ResponseEntity.ok(profileService.updateDetail(dto, id));
+    }
+
+    @PutMapping("/updateById/{id}")
+    public ResponseEntity<ProfileDTO> updateById(@RequestBody ProfileDTO dto,
+                                                 @PathVariable("id") Integer id,
+                                                 HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request);
+        return ResponseEntity.ok(profileService.updateDetail(dto, requestId));
     }
 
     @GetMapping("/all")
     public ResponseEntity<PageImpl<ProfileDTO>> getAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                       @RequestParam(value = "size", defaultValue = "10") Integer size,
-                                                      @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                       HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         return ResponseEntity.ok(profileService.getAll(page,size));
     }
 
     @DeleteMapping("/{id}")
     public Boolean deleteById(@PathVariable("id") Integer id,
-                              @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build().hasBody();
-        }
-        profileService.deleteById(id);
+                              HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
+        profileService.delete(id);
         return true;
     }
 

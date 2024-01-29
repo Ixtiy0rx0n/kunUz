@@ -22,7 +22,8 @@ Profilerole: ADMIN
 }
 
 ### getAll
-GET http://localhost:8080/articletype/all?page=1&size10
+GET http://localhost:8080/articletype/admin/all?page=1&size10
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDY1NDE0NzgsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3MDY2Mjc4NzgsImlzcyI6Ikt1blV6VGVzdCJ9.dWo3jg9kQz-LT2Ns3LMu1E7T5D7F9ze_cIqt8MH15n9b4WPEgU5FcZlZCCHFmAjmrpUl37jaOLUsFT5S0qOhJA
 
 ### getByLang
 GET http://localhost:8080/articletype/getByLang?id=1&lang=uz

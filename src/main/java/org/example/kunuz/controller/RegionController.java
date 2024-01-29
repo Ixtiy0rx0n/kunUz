@@ -7,6 +7,7 @@ import org.example.kunuz.dto.RegionDTO;
 import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.service.RegionService;
+import org.example.kunuz.util.HttpRequestUtil;
 import org.example.kunuz.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
@@ -26,12 +27,13 @@ public class RegionController {
     @PostMapping("/adm/create")// Region Yaratish
     public ResponseEntity<RegionDTO> create(@RequestBody RegionDTO dto,
                                             HttpServletRequest request){
-        Integer id = (Integer) request.getAttribute("id");
+        Integer id = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
+        /*Integer id = (Integer) request.getAttribute("id");
         ProfileRole role = (ProfileRole) request.getAttribute("role");
 
         if (!role.equals(ProfileRole.ADMIN)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+        }*/
 
         return ResponseEntity.ok(regionService.create(dto));
     }
@@ -39,21 +41,15 @@ public class RegionController {
     @PutMapping("/adm/update/{id}")
     public ResponseEntity<RegionDTO> updateById(@RequestBody RegionDTO dto,
                                                 @PathVariable("id") Integer id,
-                                                @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);
         return ResponseEntity.ok(regionService.updateById(id,dto));
     }
 
     @DeleteMapping("/adm/{id}")
     public Boolean deleteById(@PathVariable("id") Integer id,
-                              @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build().hasBody();
-        }
+                              HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);
         regionService.deleteById(id);
         return true;
     }
@@ -61,11 +57,8 @@ public class RegionController {
     @GetMapping("/adm/all")
     public ResponseEntity<PageImpl<RegionDTO>> getAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                       @RequestParam(value = "size", defaultValue = "10") Integer size,
-                                                      @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                      HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         return ResponseEntity.ok(regionService.getAll(page,size));
 
     }

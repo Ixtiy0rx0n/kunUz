@@ -1,9 +1,11 @@
 package org.example.kunuz.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.example.kunuz.dto.ArticleTypeDTO;
 import org.example.kunuz.dto.JwtDTO;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.service.ArticleTypeService;
+import org.example.kunuz.util.HttpRequestUtil;
 import org.example.kunuz.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
@@ -20,47 +22,35 @@ public class ArticleTypeController {
     @Autowired
     private ArticleTypeService articleTypeService;
 
-    @PostMapping("/create")// ArticleType Yaratish
+    @PostMapping("/admin/create")// ArticleType Yaratish
     public ResponseEntity<ArticleTypeDTO> create(@RequestBody ArticleTypeDTO dto,
-                                                 @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                 HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         ArticleTypeDTO result =  articleTypeService.create(dto);
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/admin/update/{id}")
     public ResponseEntity<ArticleTypeDTO> updateById(@RequestBody ArticleTypeDTO dto,
                                                      @PathVariable("id") Integer id,
-                                                     @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                     HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);
         return ResponseEntity.ok(articleTypeService.updateById(id,dto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
     public Boolean deleteById(@PathVariable("id") Integer id,
-                              @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build().hasBody();
-        }
+                              HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);
         articleTypeService.deleteById(id);
         return true;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/admin/all")
     public ResponseEntity<PageImpl<ArticleTypeDTO>> getAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                            @RequestParam(value = "size", defaultValue = "10") Integer size,
-                                                           @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                           HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         return ResponseEntity.ok(articleTypeService.getAll(page,size));
 
     }

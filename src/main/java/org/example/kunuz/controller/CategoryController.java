@@ -1,9 +1,11 @@
 package org.example.kunuz.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.example.kunuz.dto.CategoryDTO;
 import org.example.kunuz.dto.JwtDTO;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.service.CategorySevice;
+import org.example.kunuz.util.HttpRequestUtil;
 import org.example.kunuz.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
@@ -21,11 +23,8 @@ public class CategoryController {
 
     @PostMapping("/create")// Category Yaratish
     public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto,
-                                              @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                              HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         CategoryDTO result =  categorySevice.create(dto);
         return ResponseEntity.ok(result);
     }
@@ -33,21 +32,15 @@ public class CategoryController {
     @PutMapping("/update/{id}")
     public ResponseEntity<CategoryDTO> updateById(@RequestBody CategoryDTO dto,
                                                   @PathVariable("id") Integer id,
-                                                  @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                  HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);
         return ResponseEntity.ok(categorySevice.updateById(id,dto));
     }
 
     @DeleteMapping("/{id}")
     public Boolean deleteById(@PathVariable("id") Integer id,
-                              @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build().hasBody();
-        }
+                              HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);
         categorySevice.deleteById(id);
         return true;
     }
@@ -55,11 +48,8 @@ public class CategoryController {
     @GetMapping("/all")
     public ResponseEntity<PageImpl<CategoryDTO>> getAll(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                                         @RequestParam(value = "size", defaultValue = "10") Integer size,
-                                                        @RequestHeader(value = "Authorization") String jwt){
-        JwtDTO jwtDTO = JWTUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+                                                        HttpServletRequest request){
+        Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         return ResponseEntity.ok(categorySevice.getAll(page,size));
 
     }
