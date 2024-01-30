@@ -6,3 +6,15 @@ Content-Type: application/json
   "email": "xabibulloyevixtiyorxon@gmail.com",
   "password": "12345"
 }
+
+
+###
+POST http://localhost:8080/auth/registration
+Content-Type: application/json
+
+{
+  "name": "Shukur",
+  "surname": "Hazil",
+  "email": "Shukurjonshukurov120@gmail.com",
+  "password": "123433"
+}
