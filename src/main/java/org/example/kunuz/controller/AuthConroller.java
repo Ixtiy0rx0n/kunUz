@@ -4,12 +4,10 @@ import org.example.kunuz.dto.AuthDtO;
 import org.example.kunuz.dto.ProfileDTO;
 import org.example.kunuz.dto.RegistrationDTO;
 import org.example.kunuz.service.AuthService;
+import org.example.kunuz.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -28,5 +26,11 @@ public class AuthConroller {
     public ResponseEntity<Boolean> registration(@RequestBody RegistrationDTO dto) {
         return ResponseEntity.ok(authService.registration(dto));
     }
+
+    @GetMapping("/verification/email/{jwt}")
+    public ResponseEntity<String> emailVerification(@PathVariable("jwt") String jwt) {
+        return ResponseEntity.ok(authService.emailVerification(jwt));
+    }
+
 
 }

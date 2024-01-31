@@ -32,6 +32,12 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
     @Query("update ProfileEntity set visible=false where id=:id")
     Integer deleteByIdProfile(Integer id);
     Page<ProfileEntity> findAllByVisible(Pageable pageable, Boolean visible );
+
+    @Transactional
+    @Modifying
+    @Query("Update ProfileEntity  set status =?2 where id = ?1")
+    void updateStatus(Integer id, ProfileStatus active);
+
 }
 
 

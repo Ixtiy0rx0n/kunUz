@@ -10,4 +10,8 @@ import org.example.kunuz.enums.ProfileRole;
 public class JwtDTO {
     private Integer id;
     private ProfileRole role;
+
+    public JwtDTO(Integer id) {
+        this.id = id;
+    }
 }

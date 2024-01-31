@@ -13,8 +13,8 @@ POST http://localhost:8080/auth/registration
 Content-Type: application/json
 
 {
-  "name": "Shukur",
-  "surname": "Hazil",
-  "email": "Shukurjonshukurov120@gmail.com",
+  "name": "Ixtiyorxon",
+  "surname": "Xabibulloyev",
+  "email": "ixtiyorxonox@gmail.com",
   "password": "123433"
 }
