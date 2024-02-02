@@ -17,9 +17,10 @@ public class SmsSenderService {
     private String url;
 
     public void send(String phone, String text, String code) {
-        sendSmsHTTP(phone,text);
+        // create sms history
+        sendSmsHTTP(phone, text + code);
     }
-    public void sendSmsHTTP(String phone, String text) {
+    private void sendSmsHTTP(String phone, String text) {
         String token = "Bearer " + getTokenWithAuthorization();
 
         OkHttpClient client = new OkHttpClient();
@@ -59,7 +60,7 @@ public class SmsSenderService {
         thread.start();*/
     }
 
-    public String getTokenWithAuthorization() {
+    private String getTokenWithAuthorization() {
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)

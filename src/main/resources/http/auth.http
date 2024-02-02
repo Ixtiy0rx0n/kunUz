@@ -8,13 +8,14 @@ Content-Type: application/json
 }
 
 
-###
+### Registration
 POST http://localhost:8080/auth/registration
 Content-Type: application/json
 
 {
-  "name": "Ixtiyorxon",
-  "surname": "Xabibulloyev",
-  "email": "xabibulloyevixtiyorxon@gmail.com",
-  "password": "123433"
+  "phone": "998950490629",
+  "name": "Alish",
+  "surname": "Aliyev",
+  "email": "ewfjo572odsdcaweqw0jf@gmail3.com",
+  "password": "12345"
 }

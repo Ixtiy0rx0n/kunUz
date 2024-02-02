@@ -1,11 +1,13 @@
 package org.example.kunuz.repository;
 
+import org.example.kunuz.entity.EmailSendHistoryEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.time.LocalDateTime;
 
-public interface EmailSendHistoryRepository extends CrudRepository<EmailSendHistoryRepository, Integer> {
+public interface EmailSendtarixiRepository extends CrudRepository<EmailSendHistoryEntity, Integer> {
 
 
     Long countByEmailAndCreatedDateBetween(String email, LocalDateTime from, LocalDateTime to);
