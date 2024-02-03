@@ -5,6 +5,7 @@ import org.example.kunuz.dto.AuthDtO;
 import org.example.kunuz.dto.JwtDTO;
 import org.example.kunuz.dto.ProfileDTO;
 import org.example.kunuz.dto.RegistrationDTO;
+import org.example.kunuz.entity.EmailSendHistoryEntity;
 import org.example.kunuz.entity.ProfileEntity;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.enums.ProfileStatus;
@@ -32,7 +33,7 @@ public class AuthService {
     private MailSenderService mailSenderService;
     @Autowired
     private SmsSenderService smsServerService;
-
+    String code = RandomUtil.getRandomSmsCode();
 
     public ProfileDTO auth(AuthDtO profile) { // login
         Optional<ProfileEntity> optional = profileRepository.findByEmailAndPassword(profile.getEmail(),
@@ -87,7 +88,7 @@ public class AuthService {
 
         profileRepository.save(entity);
         //send verification code (email/sms)
-/*        String jwt = JWTUtil.encodeForEmail(entity.getId());
+        String jwt = JWTUtil.encodeForEmail(entity.getId());
 
         String text = "<h1 style=\"text-align: center\">Hello %s</h1>\n" +
                 "<p style=\"background-color: indianred; color: white; padding: 30px\">To complete registration please link to the following link</p>\n" +
@@ -100,12 +101,18 @@ public class AuthService {
                 "\">Click</a>\n" +
                 "<br>\n";
         text = String.format(text, entity.getName(), jwt);
-        mailSenderService.sendEmail(dto.getEmail(), "Complete registration", text);*/
+        mailSenderService.sendEmail(dto.getEmail(), "Complete registration", text);
+        EmailSendHistoryEntity emailhistory = new EmailSendHistoryEntity();
+        emailhistory.setId(entity.getId());
+        emailhistory.setMessage(text);
+        emailhistory.setCreatedDate(LocalDateTime.now());
+        emailhistory.setEmail(dto.getEmail());
+        emailSendtarixiRepository.save(emailhistory);
 
-//        String code = RandomUtil.getRandomSmsCode();
-        String code ="";
-        String text="KunUz project";
-        smsServerService.send(dto.getPhone(), text, code);
+//        String code ="";
+       /* String text="KunUz code ";
+        smsServerService.send(dto.getPhone(), text, code);*/
+
         return true;
     }
 
@@ -129,6 +136,6 @@ public class AuthService {
     }
 
     public String smsVerification(String phone, String code) {
-        return null;
+       return null;
     }
 }
