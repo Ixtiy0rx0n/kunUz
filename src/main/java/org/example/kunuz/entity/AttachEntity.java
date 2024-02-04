@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
 
@@ -26,4 +27,5 @@ public class AttachEntity {
     private String extension;
     @Column(name = "created_date")
     private LocalDateTime createdData;
+
 }

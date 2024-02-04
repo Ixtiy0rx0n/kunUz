@@ -3,6 +3,9 @@ POST http://localhost:8080/attach/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
-Content-Disposition: form-data; name="file"; filename="@uzbekistansclubfan.mp4"
+Content-Disposition: form-data; name="file"; filename="rasm.jpg"
 
-< C:\Users\msigaming\Desktop\img\@uzbekistansclubfan.mp4
+< C:\Users\msigaming\Desktop\img\rasm.jpg
+
+### Upload
+GET http://localhost:8080/attach/open/rasm.jpg
