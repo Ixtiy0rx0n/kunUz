@@ -1,7 +1,5 @@
 package org.example.kunuz.repository;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import org.example.kunuz.entity.ArticleTypeEntity;
 import org.example.kunuz.entity.CategoryEntity;
 import org.example.kunuz.entity.RegionEntity;
 import org.springframework.data.domain.Page;

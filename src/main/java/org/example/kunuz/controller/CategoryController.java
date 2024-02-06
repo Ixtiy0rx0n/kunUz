@@ -1,6 +1,7 @@
 package org.example.kunuz.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.example.kunuz.dto.CategoryDTO;
 import org.example.kunuz.dto.JwtDTO;
 import org.example.kunuz.enums.ProfileRole;
@@ -22,7 +23,7 @@ public class CategoryController {
     private CategorySevice categorySevice;
 
     @PostMapping("/create")// Category Yaratish
-    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto,
+    public ResponseEntity<CategoryDTO> create(@Valid @RequestBody CategoryDTO dto,
                                               HttpServletRequest request){
         Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         CategoryDTO result =  categorySevice.create(dto);
@@ -30,7 +31,7 @@ public class CategoryController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<CategoryDTO> updateById(@RequestBody CategoryDTO dto,
+    public ResponseEntity<CategoryDTO> updateById(@Valid @RequestBody CategoryDTO dto,
                                                   @PathVariable("id") Integer id,
                                                   HttpServletRequest request){
         Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);

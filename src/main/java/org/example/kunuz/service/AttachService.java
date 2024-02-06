@@ -1,11 +1,17 @@
 package org.example.kunuz.service;
 
 import org.example.kunuz.dto.AttachDTO;
+import org.example.kunuz.dto.RegionDTO;
 import org.example.kunuz.entity.AttachEntity;
+import org.example.kunuz.entity.RegionEntity;
 import org.example.kunuz.exp.AppBadException;
 import org.example.kunuz.repository.AttachRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,6 +20,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,6 +35,30 @@ public class AttachService {
     private AttachRepository attachRepository;
     @Value("${server.url}")
     private String serverUrl;
+
+    public ResponseEntity download(String attachId) {
+        try {
+            String id = attachId.substring(0, attachId.lastIndexOf("."));
+
+            AttachEntity entity = get(id);
+
+            Path file = Paths.get("uploads/" + entity.getPath() + "/" + attachId);
+
+            Resource resource = new UrlResource(file.toUri());
+
+            if (resource.exists() || resource.isReadable()) {
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\"" + entity.getOriginalName() + "\"").body(resource);
+            } else {
+                throw new RuntimeException("Could not read the file!");
+            }
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
+    }
+
+
+
 
     public String saveToSystem(MultipartFile file) { // mazgi.png
         try {
@@ -45,7 +76,6 @@ public class AttachService {
         }
         return null;
     }
-
 
   /*  public byte[] loadImage(String fileName) { // zari.jpg
         BufferedImage originalImage;
@@ -79,9 +109,6 @@ public class AttachService {
         }
         return new byte[0];
     }
-
-
-
     public byte[] open_general(String fileName) {
         byte[] data;
         try {

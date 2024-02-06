@@ -1,6 +1,5 @@
 package org.example.kunuz.repository;
 
-import org.example.kunuz.entity.ArticleTypeEntity;
 import org.example.kunuz.entity.RegionEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

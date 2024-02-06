@@ -11,5 +11,5 @@ public interface ArticleRepository extends CrudRepository<ArticleEntity, String>
     @Transactional
     @Modifying
     @Query("update ArticleEntity set visible=false where id=:id")
-    public Boolean delete(@Param("id") Integer id);
+    String delete(@Param("id") String id);
 }

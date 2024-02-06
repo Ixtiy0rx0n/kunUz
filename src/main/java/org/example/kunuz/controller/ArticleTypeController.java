@@ -1,28 +1,19 @@
 package org.example.kunuz.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
-import org.example.kunuz.dto.ArticleTypeDTO;
-import org.example.kunuz.dto.JwtDTO;
-import org.example.kunuz.enums.ProfileRole;
-import org.example.kunuz.service.ArticleTypeService;
-import org.example.kunuz.util.HttpRequestUtil;
-import org.example.kunuz.util.JWTUtil;
+import org.example.kunuz.service.ArticleTypesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/articletype")
 public class ArticleTypeController {
 
     @Autowired
-    private ArticleTypeService articleTypeService;
+    private ArticleTypesService articleTypeService;
 
-    @PostMapping("/admin/create")// ArticleType Yaratish
+   /*
+   Types va ArticleTypes larni qoshgandan keyin chalkashib ketti
+   @PostMapping("/admin/create")// ArticleType Yaratish
     public ResponseEntity<ArticleTypeDTO> create(@RequestBody ArticleTypeDTO dto,
                                                  HttpServletRequest request){
         Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
@@ -59,5 +50,5 @@ public class ArticleTypeController {
     public ResponseEntity<Optional<ArticleTypeDTO>> getByLang(@RequestParam("id") Integer id,
                                                               @RequestParam("lang") String lang){
         return ResponseEntity.ok(articleTypeService.getByLang(id,lang));
-    }
+    }*/
 }

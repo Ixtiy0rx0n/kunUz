@@ -1,6 +1,7 @@
 package org.example.kunuz.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.example.kunuz.dto.CreatedProfileDTO;
 import org.example.kunuz.dto.ProfileDTO;
 import org.example.kunuz.enums.ProfileRole;
@@ -19,13 +20,13 @@ public class ProfileController {
     private ProfileService profileService;
 
     @PostMapping("")
-    public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto,
+    public ResponseEntity<ProfileDTO> create(@Valid @RequestBody ProfileDTO dto,
                                                     HttpServletRequest request){
         Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
         return ResponseEntity.ok(profileService.create(dto));
     }
     @PutMapping("/updateAdmin/{id}")
-    public ResponseEntity<ProfileDTO> updateAdmin(@RequestBody ProfileDTO dto,
+    public ResponseEntity<ProfileDTO> updateAdmin(@Valid @RequestBody ProfileDTO dto,
                                                 @PathVariable("id") Integer id,
                                                  HttpServletRequest request){
         Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN);
@@ -33,7 +34,7 @@ public class ProfileController {
     }
 
     @PutMapping("/updateById/{id}")
-    public ResponseEntity<ProfileDTO> updateById(@RequestBody ProfileDTO dto,
+    public ResponseEntity<ProfileDTO> updateById(@Valid @RequestBody ProfileDTO dto,
                                                  @PathVariable("id") Integer id,
                                                  HttpServletRequest request){
         Integer requestId = HttpRequestUtil.getProfileId(request);

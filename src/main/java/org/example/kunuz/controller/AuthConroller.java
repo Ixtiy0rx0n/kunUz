@@ -1,5 +1,6 @@
 package org.example.kunuz.controller;
 
+import jakarta.validation.Valid;
 import org.example.kunuz.dto.AuthDtO;
 import org.example.kunuz.dto.ProfileDTO;
 import org.example.kunuz.dto.RegistrationDTO;
@@ -16,12 +17,12 @@ public class AuthConroller {
     private AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<ProfileDTO> login(@RequestBody AuthDtO auth) {
+    public ResponseEntity<ProfileDTO> login(@Valid @RequestBody AuthDtO auth) {
         return ResponseEntity.ok(authService.auth(auth));
 
     }
     @PostMapping("/registration")
-    public ResponseEntity<Boolean> registration(@RequestBody RegistrationDTO dto) {
+    public ResponseEntity<Boolean> registration(@Valid @RequestBody RegistrationDTO dto) {
         return ResponseEntity.ok(authService.registration(dto));
     }
 

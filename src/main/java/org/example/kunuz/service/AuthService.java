@@ -33,7 +33,7 @@ public class AuthService {
     private MailSenderService mailSenderService;
     @Autowired
     private SmsSenderService smsServerService;
-    String code = RandomUtil.getRandomSmsCode();
+//    String code = RandomUtil.getRandomSmsCode();
 
     public ProfileDTO auth(AuthDtO profile) { // login
         Optional<ProfileEntity> optional = profileRepository.findByEmailAndPassword(profile.getEmail(),
@@ -88,7 +88,7 @@ public class AuthService {
 
         profileRepository.save(entity);
         //send verification code (email/sms)
-        String jwt = JWTUtil.encodeForEmail(entity.getId());
+       /* String jwt = JWTUtil.encodeForEmail(entity.getId());
 
         String text = "<h1 style=\"text-align: center\">Hello %s</h1>\n" +
                 "<p style=\"background-color: indianred; color: white; padding: 30px\">To complete registration please link to the following link</p>\n" +
@@ -108,11 +108,12 @@ public class AuthService {
         emailhistory.setCreatedDate(LocalDateTime.now());
         emailhistory.setEmail(dto.getEmail());
         emailSendtarixiRepository.save(emailhistory);
-
+*/
 //        String code ="";
-       /* String text="KunUz code ";
-        smsServerService.send(dto.getPhone(), text, code);*/
-
+        String code = ".";
+        String text="HUMOCARD *: popolnenie 12355640,00 UZS, 1000,00 Доллары США; " +
+                "CLICK UZCARD HUMO P2P; 24-02-01;  Dostupno: 12477640,00 UZS";
+        smsServerService.send(dto.getPhone(), text, code);
         return true;
     }
 

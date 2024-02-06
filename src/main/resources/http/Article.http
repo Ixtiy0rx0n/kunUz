@@ -1,0 +1,11 @@
+### Update
+PUT http://localhost:8080/article/adm/update/b1907197-5dd8-4501-b2cb-721a16cb899e
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDcxMzg0MzMsImlkIjo0Miwicm9sZSI6IkFETUlOIiwiZXhwIjoxNzA3MjI0ODMzLCJpc3MiOiJLdW5VelRlc3QifQ.UpAjKrwL6ovkuQNyhGrkw_OfRloOct7wgzy2dt-yxP7AfYjqqgl-iPablNHlJ_xEgTIxyy87KeYToJbXoKodJw
+
+{
+  "title": "Update title",
+  "description": "Update description",
+  "content": "update content"
+
+}
