@@ -43,6 +43,12 @@ public class ArticleEntity {
     @JoinColumn(name = "publisher_id",insertable = false, updatable = false)
     private ProfileEntity publisher;
 
+    @Column(name = "category_id")
+    private Integer categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id",insertable = false, updatable = false)
+    private CategoryEntity category;
+
     @Column(name = "photo_id")
     private String photoId;
     @ManyToOne

@@ -95,7 +95,7 @@ public class ProfileService {
 
         List<Profile>profileList=new LinkedList<>();
         for (ProfileEntity entity : resultFilter.getList()) {
-            profileList.add(toDo(entity));
+            profileList.add(toDTo(entity));
         }
         return new PageImpl<>(profileList, pageable, resultFilter.getTotalSize());
     }*/

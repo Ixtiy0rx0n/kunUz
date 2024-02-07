@@ -1,12 +1,10 @@
 package org.example.kunuz.config;
 
-
 import jakarta.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 @Configuration
 public class SecuredFilterConfig {
     @Autowired
@@ -29,6 +27,7 @@ public class SecuredFilterConfig {
         bean.addUrlPatterns("/profile/");
         bean.addUrlPatterns("/profile/*");
         bean.addUrlPatterns("/profile/**");
+        bean.addUrlPatterns("/article/adm/create");
 
         return bean;
     }

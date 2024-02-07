@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class ArticleLikeDTO {
     private Integer id;
     private ProfileDTO profileId;
-    private ArticleDTO articleId;
+    private ArticleCreateDTO articleId;
     private LocalDateTime createdDate;
 
 

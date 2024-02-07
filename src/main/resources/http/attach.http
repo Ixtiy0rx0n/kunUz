@@ -9,3 +9,8 @@ Content-Disposition: form-data; name="file"; filename="rasm.jpg"
 
 ### Upload
 GET http://localhost:8080/attach/open/rasm.jpg
+
+#### Delete file
+#DELETE http://localhost:8080/attach/delete/uzbekistansclubfan.mp4
+
+

@@ -26,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,6 +36,7 @@ public class AttachService {
     private AttachRepository attachRepository;
     @Value("${server.url}")
     private String serverUrl;
+    private final Path root = Paths.get("uploads");
 
     public ResponseEntity download(String attachId) {
         try {
@@ -57,6 +59,20 @@ public class AttachService {
         }
     }
 
+    public boolean delete(String id) {
+        try {
+            Path file = root.resolve(id);
+            Optional<AttachEntity> optional = attachRepository.findById(id);
+            AttachEntity entity = optional.get();
+            if (optional.isPresent()) {
+                attachRepository.delete(entity);
+                return Files.deleteIfExists(file);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
+        return true;
+    }
 
 
 

@@ -9,3 +9,19 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDcxMzg0MzMsImlkIjo0Miwic
   "content": "update content"
 
 }
+
+### Create
+POST http://localhost:8080/article/adm/create
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDczMTExNzgsImlkIjo0Miwicm9sZSI6IkFETUlOIiwiZXhwIjoxNzA3Mzk3NTc4LCJpc3MiOiJLdW5VelRlc3QifQ.O1RbKKzNuwH8uiSGUzoeqllYoH0HsLnLJMh6jenvPIhjYGHj11XLNaQ7vbQURG-IYunbSKSAUUE9wgRRxZIH6w
+Content-Type: application/json
+
+{
+  "title": "Dolzarb",
+  "description": "Dolzarb habarlar hammasi shu yerda",
+  "content": "html codes",
+  "regionId": 2,
+  "categoryId": 1,
+  "articleType": [1],
+  "photoId": "b2538f31-1502-4b18-b955-e7374dc65054"
+}
+
