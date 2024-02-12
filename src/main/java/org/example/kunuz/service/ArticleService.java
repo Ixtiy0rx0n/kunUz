@@ -2,9 +2,7 @@ package org.example.kunuz.service;
 
 import org.example.kunuz.dto.ArticleCreateDTO;
 import org.example.kunuz.entity.ArticleEntity;
-import org.example.kunuz.entity.ProfileEntity;
 import org.example.kunuz.enums.ArticleStatus;
-import org.example.kunuz.exp.AppBadException;
 import org.example.kunuz.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

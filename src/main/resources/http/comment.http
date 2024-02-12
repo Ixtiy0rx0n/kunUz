@@ -1,0 +1,30 @@
+### Create
+POST http://localhost:8080/comment/create
+Content-Type: application/json
+Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=
+
+{
+
+  "profileId": 2,
+  "content": "Yaxshi izoh",
+  "articleId": "b1907197-5dd8-4501-b2cb-721a16cb899e"
+}
+
+### Update
+PUT http://localhost:8080/comment/update/1
+Content-Type: application/json
+Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=
+
+{
+  "profileId": 2,
+  "articleId": "b1907197-5dd8-4501-b2cb-721a16cb899e",
+  "content": "uchinchi marta yangilangan izoh"
+}
+
+### Delete
+DELETE http://localhost:8080/comment/adm/1
+Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=
+
+###Get Article Comments
+GET http://localhost:8080/comment/allarticlecomment/b1907197-5dd8-4501-b2cb-721a16cb899e
+Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=

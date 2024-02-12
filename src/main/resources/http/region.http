@@ -1,12 +1,12 @@
 ### create
-POST localhost:8080/region/create
+POST localhost:8080/region/adm/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDYxOTU0MTksImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3MDYyODE4MTksImlzcyI6Ikt1blV6VGVzdCJ9.H76wKI-5IHTUqhAM7w3qhPBOwj5PgI8MZE7SQkHhgGgxSlz3fRvs2GjgSrpgudjsxZyVnmmckQOBLnYdKJH7zw
+Authorization: Basic dXNlcjpkNjkyZGY0Ni03NDE2LTRiMjItYmZiMy0xODY4MjFjNWIxZDY=
 
 {
-  "nameUz": "Sam uz",
-  "nameRu": "sam ru",
-  "nameEn": "sam en",
+  "nameUz": "Qoraqalpoq",
+  "nameRu": "karakalpak rus",
+  "nameEn": "karakalpak eng",
   "orderNumber": 4
 }
 

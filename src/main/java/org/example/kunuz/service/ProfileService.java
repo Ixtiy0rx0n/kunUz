@@ -22,18 +22,6 @@ public class ProfileService {
 
 
     public ProfileDTO create(ProfileDTO dto) {
-        if (dto.getName() == null || dto.getName().trim().length() <= 1) {
-            throw new AppBadException("Profile name required");
-        }
-        if (dto.getSurname() == null || dto.getSurname().trim().length() <= 1) {
-            throw new AppBadException("Profile surname required");
-        }
-        if (dto.getEmail() == null || dto.getEmail().trim().length() < 8) {
-            throw new AppBadException("Profile email required");
-        }
-        if (dto.getPassword() == null || dto.getPassword().trim().isEmpty()) {
-            throw new AppBadException("Profile password required");
-        }
         ProfileEntity entity = new ProfileEntity();
         if (dto.getStatus() == null) {
             entity.setStatus(ProfileStatus.ACTIVE);
@@ -56,27 +44,14 @@ public class ProfileService {
 
     public ProfileDTO update(ProfileDTO dto, Integer id) {
         ProfileEntity entity = get(id);
-
-        if (dto.getName() != null) {
-            entity.setName(dto.getName());
-        } else {
-            dto.setName(entity.getName());
-        }
-        if (dto.getSurname() != null) {
-            entity.setSurname(dto.getSurname());
-        } else {
-            dto.setSurname(entity.getSurname());
-        }
-        if (dto.getRole() != null) {
-            entity.setRole(dto.getRole());
-        } else {
-            dto.setRole(entity.getRole());
-        }
-        if (dto.getStatus() != null) {
-            entity.setStatus(dto.getStatus());
-        } else {
-            dto.setStatus(entity.getStatus());
-        }
+        entity.setName(dto.getName());
+        dto.setName(entity.getName());
+        entity.setSurname(dto.getSurname());
+        dto.setSurname(entity.getSurname());
+        entity.setRole(dto.getRole());
+        dto.setRole(entity.getRole());
+        entity.setStatus(dto.getStatus());
+        dto.setStatus(entity.getStatus());
         entity.setUpdatedDate(LocalDateTime.now());
         profileRepository.update(dto.getName(), dto.getSurname(), dto.getRole(), dto.getStatus(), entity.getId());
         return dto;

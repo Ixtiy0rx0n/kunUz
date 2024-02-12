@@ -27,7 +27,7 @@ public class RegionController {
     @PostMapping("/adm/create")// Region Yaratish
     public ResponseEntity<RegionDTO> create(@Valid @RequestBody RegionDTO dto,
                                             HttpServletRequest request){
-        Integer id = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
+//        Integer id = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR); jwt uchun
         /*Integer id = (Integer) request.getAttribute("id");
         ProfileRole role = (ProfileRole) request.getAttribute("role");
 

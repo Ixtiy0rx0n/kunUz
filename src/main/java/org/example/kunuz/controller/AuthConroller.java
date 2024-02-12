@@ -24,7 +24,6 @@ public class AuthConroller {
     @PostMapping("/login")
     @Operation( summary = "Api for login", description = "this api used for authorization")
     public ResponseEntity<ProfileDTO> login(@Valid @RequestBody AuthDtO auth) {
-        log.info("Login {} ", auth.getEmail());
         return ResponseEntity.ok(authService.auth(auth));
     }
     @PostMapping("/registration")

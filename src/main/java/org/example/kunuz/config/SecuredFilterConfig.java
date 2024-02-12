@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SecuredFilterConfig {
-    @Autowired
+   /* @Autowired
     private TokenFilter tokenFilter;
     @Bean
     public FilterRegistrationBean<Filter> filterRegistrationBean() {
@@ -30,7 +30,5 @@ public class SecuredFilterConfig {
         bean.addUrlPatterns("/article/adm/create");
 
         return bean;
-    }
-
-
+    }*/
 }

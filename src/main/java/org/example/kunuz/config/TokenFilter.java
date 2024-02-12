@@ -13,14 +13,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
 import java.io.IOException;
-@Component
+//@Component
 public class TokenFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
-                         FilterChain filterChain)
-                         throws IOException, ServletException {
+                         FilterChain filterChain) throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) servletRequest;
         final HttpServletResponse response = (HttpServletResponse) servletResponse;
 

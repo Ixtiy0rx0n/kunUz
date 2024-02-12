@@ -4,22 +4,24 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.kunuz.enums.ArticleLikeStatus;
-
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
-public class ArticleLikeDTO {
+public class CommentDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private LocalDateTime createdDate;
+    private LocalDateTime updateDate;
     @NotNull(message = "profile id required")
     private Integer profileId;
-    @NotBlank(message = "article id required")
+    @NotBlank(message = "content required")
+    @Size(min = 1, max = 1024, message = "content is required")
+    private String content;
+    @NotNull(message = "article id required")
     private String articleId;
-    private LocalDateTime createdDate;
-    private ArticleLikeStatus status;
-
+    private Boolean visible=true;
 }

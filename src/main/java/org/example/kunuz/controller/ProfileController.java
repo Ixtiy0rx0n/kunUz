@@ -39,6 +39,8 @@ public class ProfileController {
         log.info("Profile updateAdmin {}",dto.getEmail());
         return ResponseEntity.ok(profileService.updateDetail(dto, id));
     }
+
+
     @Operation(summary = "Profile update Any",description = "Profile yangilash hamma o'zi")
     @PutMapping("/updateById/{id}")
     public ResponseEntity<ProfileDTO> updateById(@Valid @RequestBody ProfileDTO dto,
@@ -57,7 +59,7 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.getAll(page,size));
     }
     @Operation(summary = "profile delete",description = "profile o'chirish")
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public Boolean deleteById(@PathVariable("id") Integer id,
                               HttpServletRequest request){
         Integer requestId = HttpRequestUtil.getProfileId(request,ProfileRole.ADMIN, ProfileRole.MODERATOR);
