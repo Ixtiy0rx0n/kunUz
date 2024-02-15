@@ -3,7 +3,6 @@ package org.example.kunuz.util;
 import io.jsonwebtoken.*;
 import org.example.kunuz.dto.JwtDTO;
 import org.example.kunuz.enums.ProfileRole;
-
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Date;
 
@@ -62,5 +61,36 @@ public class JWTUtil {
     }
 
 
+    public static String encode(String email, ProfileRole role) {
+        JwtBuilder jwtBuilder = Jwts.builder();
+        jwtBuilder.issuedAt(new Date());
 
+        SignatureAlgorithm sa = SignatureAlgorithm.HS512;
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), sa.getJcaName());
+
+        jwtBuilder.signWith(secretKeySpec);
+
+        jwtBuilder.claim("email", email);
+        jwtBuilder.claim("role", role);
+
+        jwtBuilder.expiration(new Date(System.currentTimeMillis() + (tokenLiveTime)));
+        jwtBuilder.issuer("KunUzTest");
+        return jwtBuilder.compact();
+    }
+
+
+    public static JwtDTO decodeForSpringSecurity(String token) {
+        SignatureAlgorithm sa = SignatureAlgorithm.HS512;
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), sa.getJcaName());
+        JwtParser jwtParser = Jwts.parser()
+                .verifyWith(secretKeySpec)
+                .build();
+        Jws<Claims> jws = jwtParser.parseSignedClaims(token);
+        Claims claims = jws.getPayload();
+
+        String email = (String) claims.get("email");
+        String role = (String) claims.get("role");
+        ProfileRole profileRole = ProfileRole.valueOf(role);
+        return new JwtDTO(email, profileRole);
+    }
 }

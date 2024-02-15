@@ -5,8 +5,8 @@ import org.example.kunuz.dto.AuthDtO;
 import org.example.kunuz.dto.JwtDTO;
 import org.example.kunuz.dto.ProfileDTO;
 import org.example.kunuz.dto.RegistrationDTO;
-import org.example.kunuz.entity.EmailSendHistoryEntity;
 import org.example.kunuz.entity.ProfileEntity;
+import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.enums.ProfileStatus;
 import org.example.kunuz.exp.AppBadException;
@@ -14,11 +14,12 @@ import org.example.kunuz.repository.EmailSendtarixiRepository;
 import org.example.kunuz.repository.ProfileRepository;
 import org.example.kunuz.util.JWTUtil;
 import org.example.kunuz.util.MDUtil;
-import org.example.kunuz.util.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -33,30 +34,28 @@ public class AuthService {
     private MailSenderService mailSenderService;
     @Autowired
     private SmsSenderService smsServerService;
-//    String code = RandomUtil.getRandomSmsCode();
-
-    public ProfileDTO auth(AuthDtO profile) { // login
+    //    String code = RandomUtil.getRandomSmsCode();
+    @Autowired
+    private ResourceBundleService resourceBundleService;
+    public ProfileDTO auth(AuthDtO profile, AppLanguage applanguage) { // login
         Optional<ProfileEntity> optional = profileRepository.findByEmailAndPassword(profile.getEmail(),
                 MDUtil.encode(profile.getPassword()));
         if (optional.isEmpty()) {
-            throw new AppBadException("Email or Password is wrong!");
+            throw new AppBadException(resourceBundleService.getMessage("email.password.wrong", applanguage));
         }
         ProfileEntity entity = optional.get();
-
         if (!entity.getStatus().equals(ProfileStatus.ACTIVE)) {
-            throw new AppBadException("Profile not active");
+            throw new AppBadException(resourceBundleService.getMessage("profile.not.active", applanguage));
         }
-
         ProfileDTO dto = new ProfileDTO();
-
         dto.setName(entity.getName());
         dto.setRole(entity.getRole());
         dto.setSurname(entity.getSurname());
-        dto.setJwt(JWTUtil.encode(entity.getId(), entity.getRole()));
+        dto.setJwt(JWTUtil.encode(entity.getEmail(), entity.getRole()));
         return dto;
     }
 
-    public Boolean registration(RegistrationDTO dto) {
+    public Boolean registration(RegistrationDTO dto, AppLanguage appLanguage) {
         // validation
 
         // check
@@ -67,14 +66,14 @@ public class AuthService {
                 // or
                 // send verification code (email/sms)
             } else {
-                throw new AppBadException("Email exists");
+                throw new AppBadException(resourceBundleService.getMessage("email.exists",appLanguage));
             }
         }
         LocalDateTime from = LocalDateTime.now().minusMinutes(1);
         LocalDateTime to = LocalDateTime.now();
 
         if (emailSendtarixiRepository.countSendEmail(dto.getEmail(), from, to) >= 3) {
-            throw new AppBadException("To many attempt. Please try after 1 minute.");
+            throw new AppBadException(resourceBundleService.getMessage("try.after.1.minute", appLanguage));
         }
         // create
         ProfileEntity entity = new ProfileEntity();
@@ -83,7 +82,7 @@ public class AuthService {
         entity.setEmail(dto.getEmail());
         entity.setPassword(MDUtil.encode(dto.getPassword()));
         entity.setStatus(ProfileStatus.REGISTRATION);
-        entity.setRole(ProfileRole.USER);
+        entity.setRole(ProfileRole.ROLE_USER);
         entity.setPhone(dto.getPhone());
 
         profileRepository.save(entity);
@@ -111,32 +110,32 @@ public class AuthService {
 */
 //        String code ="";
         String code = ".";
-        String text="HUMOCARD *: popolnenie 12355640,00 UZS, 1000,00 Доллары США; " +
+        String text = "HUMOCARD *: popolnenie 12355640,00 UZS, 1000,00 Доллары США; " +
                 "CLICK UZCARD HUMO P2P; 24-02-01;  Dostupno: 12477640,00 UZS";
         smsServerService.send(dto.getPhone(), text, code);
         return true;
     }
 
-    public String emailVerification(String jwt) {
+    public String emailVerification(String jwt, AppLanguage appLanguage) {
         try {
             JwtDTO jwtDTO = JWTUtil.decode(jwt);
 
             Optional<ProfileEntity> optional = profileRepository.findById(jwtDTO.getId());
             if (!optional.isPresent()) {
-                throw new AppBadException("Profile not found");
+                throw new AppBadException(resourceBundleService.getMessage("profile.not.found",appLanguage ));
             }
             ProfileEntity entity = optional.get();
             if (!entity.getStatus().equals(ProfileStatus.REGISTRATION)) {
-                throw new AppBadException("Profile in wrong status");
+                throw new AppBadException(resourceBundleService.getMessage("profile.wrong.status",appLanguage));
             }
             profileRepository.updateStatus(entity.getId(), ProfileStatus.ACTIVE);
         } catch (JwtException e) {
-            throw new AppBadException("Please tyre again.");
+            throw new AppBadException(resourceBundleService.getMessage("please.try.again", appLanguage));
         }
         return null;
     }
 
     public String smsVerification(String phone, String code) {
-       return null;
+        return null;
     }
 }

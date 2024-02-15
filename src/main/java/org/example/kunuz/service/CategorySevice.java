@@ -2,6 +2,7 @@ package org.example.kunuz.service;
 
 import org.example.kunuz.dto.CategoryDTO;
 import org.example.kunuz.entity.CategoryEntity;
+import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.exp.AppBadException;
 import org.example.kunuz.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import java.util.Optional;
 public class CategorySevice {
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ResourceBundleService resourceBundleService;
 
     public CategoryDTO create(CategoryDTO dto) {
         CategoryEntity entity = new CategoryEntity();
@@ -29,10 +32,10 @@ public class CategorySevice {
         return dto;
     }
 
-    public CategoryDTO updateById(Integer id, CategoryDTO dto) {
+    public CategoryDTO updateById(Integer id, CategoryDTO dto, AppLanguage appLanguage) {
         Optional<CategoryEntity> optional = categoryRepository.findById(id);
         if (optional.isEmpty()) {
-            throw new AppBadException("Category not found");
+            throw new AppBadException(resourceBundleService.getMessage("category.not.found", appLanguage));
         }
         CategoryEntity entity = optional.get();
         entity.setNameUz(dto.getNameUz());
@@ -46,7 +49,7 @@ public class CategorySevice {
         return dto;
     }
 
-    public void deleteById(Integer id){
+    public void deleteById(Integer id) {
         categoryRepository.delete(id);
     }
 
@@ -66,18 +69,16 @@ public class CategorySevice {
         return new PageImpl<>(dtoList, paging, totalElement);
     }
 
-    public Optional<CategoryDTO> getByLang(Integer id, String lang) {
+    public Optional<CategoryDTO> getByLang(Integer id, String lang, AppLanguage appLanguage) {
         Optional<CategoryEntity> optional = categoryRepository.findById(id);
-
         if (optional.isEmpty()) {
-            throw new AppBadException("Lang Not found ❌❌❌");
+            throw new AppBadException(resourceBundleService.getMessage("language.not.found", appLanguage));
         }
         CategoryEntity entity = optional.get();
         CategoryDTO dto = new CategoryDTO();
         dto.setId(entity.getId());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setOrderNumber(entity.getOrderNumber());
-
         switch (lang) {
             case "uz" -> dto.setNameUz(entity.getNameUz());
             case "ru" -> dto.setNameRu(entity.getNameRu());
@@ -89,13 +90,6 @@ public class CategorySevice {
         return Optional.of(dto);
 
     }
-
-
-
-
-
-
-
 
 
     public CategoryDTO toDTO(CategoryEntity entity) {

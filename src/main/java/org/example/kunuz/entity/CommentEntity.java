@@ -1,8 +1,6 @@
 package org.example.kunuz.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +21,12 @@ public class CommentEntity extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "article_id", insertable = false, updatable = false)
     private ArticleEntity article;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reply_id" )
+    private CommentEntity replyComment;
+
+    @Column(name = "reply_id", insertable = false, updatable = false)
+    private Integer replyCommentId;
+
 }

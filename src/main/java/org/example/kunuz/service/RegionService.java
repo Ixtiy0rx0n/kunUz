@@ -10,15 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RegionService {
     @Autowired
     private RegionRepository regionRepository;
+    @Autowired
+    private ResourceBundleService resourceBundleService;
 
     public RegionDTO create(RegionDTO dto) {
         RegionEntity entity = new RegionEntity();
@@ -32,8 +32,8 @@ public class RegionService {
         return dto;
     }
 
-    public RegionDTO updateById(Integer id, RegionDTO dto) {
-        RegionEntity entity = get(id);
+    public RegionDTO updateById(Integer id, RegionDTO dto, AppLanguage appLanguage) {
+        RegionEntity entity = get(id, appLanguage);
         entity.setNameUz(dto.getNameUz());
         entity.setNameRu(dto.getNameRu());
         entity.setNameEn(dto.getNameEn());
@@ -43,8 +43,8 @@ public class RegionService {
         return dto;
     }
 
-    public Boolean deleteById(Integer id) {
-        RegionEntity regionEntity = get(id);
+    public Boolean deleteById(Integer id, AppLanguage appLanguage) {
+        RegionEntity regionEntity = get(id, appLanguage);
         int effectedRows = regionRepository.delete(id);
         return true;
     }
@@ -86,9 +86,9 @@ public class RegionService {
 
 
 
-    public RegionEntity get(Integer id) {
+    public RegionEntity get(Integer id, AppLanguage appLanguage) {
         return regionRepository.findById(id).orElseThrow(() -> {
-            throw new AppBadException("Region not found");
+            throw new AppBadException(resourceBundleService.getMessage("region.not.found", appLanguage));
         });
     }
 

@@ -1,7 +1,7 @@
 ### Like or dislike
 POST http://localhost:8080/articlelike/likeordislike
 Content-Type: application/json
-Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDc3NTIxNTIsImVtYWlsIjoieGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNzgzODU1MiwiaXNzIjoiS3VuVXpUZXN0In0.OLxhGXIIHCUVFTwJy8sbyN49bwzmzonz7I_gFj1NTRKJ0zpQLXNacC-ydBgZzGHtl1rJbVkQQyh2MPJHvWsozA
 
 {
   "profileId": 2,

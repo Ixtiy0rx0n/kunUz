@@ -1,9 +1,8 @@
 package org.example.kunuz.service;
 
 import org.example.kunuz.dto.AttachDTO;
-import org.example.kunuz.dto.RegionDTO;
 import org.example.kunuz.entity.AttachEntity;
-import org.example.kunuz.entity.RegionEntity;
+import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.exp.AppBadException;
 import org.example.kunuz.repository.AttachRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -31,18 +27,19 @@ import java.util.UUID;
 
 @Service
 public class AttachService {
-
+    @Autowired
+    private ResourceBundleService resourceBundleService;
     @Autowired
     private AttachRepository attachRepository;
     @Value("${server.url}")
     private String serverUrl;
     private final Path root = Paths.get("uploads");
 
-    public ResponseEntity download(String attachId) {
+    public ResponseEntity download(String attachId, AppLanguage appLanguage) {
         try {
             String id = attachId.substring(0, attachId.lastIndexOf("."));
 
-            AttachEntity entity = get(id);
+            AttachEntity entity = get(id, appLanguage);
 
             Path file = Paths.get("uploads/" + entity.getPath() + "/" + attachId);
 
@@ -112,9 +109,9 @@ public class AttachService {
         }
     }*/
 
-    public byte[] loadImage(String attachId) { // dasdasd-dasdasda-asdasda-asdasd.jpg
+    public byte[] loadImage(String attachId, AppLanguage appLanguage) { // dasdasd-dasdasda-asdasda-asdasd.jpg
         String id = attachId.substring(0, attachId.lastIndexOf("."));
-        AttachEntity entity = get(id);
+        AttachEntity entity = get(id, appLanguage);
         byte[] data;
         try {
             Path file = Paths.get("uploads/" + entity.getPath() + "/" + attachId);
@@ -180,9 +177,9 @@ public class AttachService {
         return null;
     }
 
-    AttachEntity get(String id) {
+    AttachEntity get(String id, AppLanguage appLanguage) {
         return attachRepository.findById(id).orElseThrow(() -> {
-            throw new AppBadException("File not found");
+            throw new AppBadException(resourceBundleService.getMessage("file.not.found", appLanguage));
         });
     }
 

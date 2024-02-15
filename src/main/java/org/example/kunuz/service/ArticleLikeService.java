@@ -14,16 +14,28 @@ public class ArticleLikeService{
     @Autowired
     private ArticleLikeRepository articleLikeRepository;
 
-    public Boolean likeOrDislike(ArticleLikeDTO dto){
-        ArticleLikeEntity entity = new ArticleLikeEntity();
-        entity.setStatus(dto.getStatus());
-        entity.setArticleId(dto.getArticleId());
-        entity.setProfileId(dto.getProfileId());
-        entity.setCreatedDate(LocalDateTime.now());
-        entity.setVisible(true);
-        articleLikeRepository.save(entity);
-        return true;
-    }
+    /*public ArticleLikeDTO likeOrDislike(ArticleLikeDTO dto){
+         Optional<ArticleLikeEntity> optional = articleLikeRepository.findLike(dto.getProfileId(), dto.getArticleId());
+        if (optional.isEmpty()) {
+            ArticleLikeEntity entity = new ArticleLikeEntity();
+            entity.setStatus(dto.getStatus());
+            entity.setArticleId(dto.getArticleId());
+            entity.setProfileId(dto.getProfileId());
+            entity.setCreatedDate(LocalDateTime.now());
+            entity.setVisible(true);
+            articleLikeRepository.save(entity);
+            dto.setId(entity.getId());
+            dto.setCreatedDate(entity.getCreatedDate());
+            return dto;
+        }
+        else{
+            ArticleLikeEntity entity = optional.get();
+            entity.setProfileId(dto.getProfileId());
+            entity.setArticleId(dto.getArticleId());
+            entity.setStatus(dto.getStatus());
+            return dto;
+        }
+    }*/
     public Boolean removeLike(ArticleLikeDTO dto){
         Optional<ArticleLikeEntity> optional = articleLikeRepository.findById(dto.getId());
         ArticleLikeEntity entity = optional.get();

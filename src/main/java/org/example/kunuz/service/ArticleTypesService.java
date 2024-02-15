@@ -1,15 +1,11 @@
 package org.example.kunuz.service;
 
 import org.example.kunuz.entity.ArticleTypesEntity;
-import org.example.kunuz.exp.AppBadException;
 import org.example.kunuz.repository.ArticleTypesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArticleTypesService {

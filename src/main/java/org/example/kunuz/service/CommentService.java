@@ -1,10 +1,8 @@
 package org.example.kunuz.service;
 
-import org.example.kunuz.dto.ArticleLikeDTO;
-import org.example.kunuz.dto.CategoryDTO;
 import org.example.kunuz.dto.CommentDTO;
-import org.example.kunuz.dto.RegionDTO;
 import org.example.kunuz.entity.*;
+import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.exp.AppBadException;
 import org.example.kunuz.repository.ArticleRepository;
 import org.example.kunuz.repository.CommentRepository;
@@ -38,6 +36,9 @@ public class CommentService {
     @Autowired
     private ArticleRepository articleRepository;
 
+    @Autowired
+    private ResourceBundleService resourceBundleService;
+
     public CommentDTO create(CommentDTO dto) {
         CommentEntity entity = new CommentEntity();
         entity.setContent(dto.getContent());
@@ -50,7 +51,7 @@ public class CommentService {
         return dto;
     }
 
-    public CommentDTO update(Integer id, CommentDTO dto) {
+    public CommentDTO update(Integer id, CommentDTO dto, AppLanguage appLanguage) {
         Optional<CommentEntity> optional = commentRepository.findById(id);
         if (optional.isPresent()) {
             CommentEntity entity = optional.get();
@@ -63,17 +64,17 @@ public class CommentService {
             return dto;
         }
         else {
-            throw new AppBadException("comment not found");
+            throw new AppBadException(resourceBundleService.getMessage("comment.not.found", appLanguage));
         }
     }
 
-    public Boolean delete(Integer id) {
+    public Boolean delete(Integer id, AppLanguage appLanguage) {
         Optional<CommentEntity> optional = commentRepository.findById(id);
         if (optional.isPresent()) {
             commentRepository.delete(id);
             return true;
         } else {
-            throw new AppBadException("Comment not found");
+            throw new AppBadException(resourceBundleService.getMessage("comment.not.found", appLanguage));
         }
     }
 
@@ -86,7 +87,7 @@ public class CommentService {
             }
             return listComment;
         } else {
-            throw new AppBadException("Article not found");
+            throw new AppBadException(resourceBundleService.getMessage("article.not.found", appLanguage));
         }
     }*/
 

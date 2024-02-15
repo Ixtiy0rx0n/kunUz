@@ -2,6 +2,7 @@ package org.example.kunuz.service;
 
 import org.example.kunuz.dto.ProfileDTO;
 import org.example.kunuz.entity.ProfileEntity;
+import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.enums.ProfileStatus;
 import org.example.kunuz.exp.AppBadException;
@@ -20,6 +21,9 @@ public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
+    @Autowired
+    private ResourceBundleService resourceBundleService;
+
 
     public ProfileDTO create(ProfileDTO dto) {
         ProfileEntity entity = new ProfileEntity();
@@ -29,7 +33,7 @@ public class ProfileService {
             entity.setStatus(dto.getStatus());
         }
         if (dto.getRole() == null) {
-            entity.setRole(ProfileRole.USER);
+            entity.setRole(ProfileRole.ROLE_USER);
         } else {
             entity.setRole(dto.getRole());
         }
@@ -42,8 +46,8 @@ public class ProfileService {
         return dto;
     }
 
-    public ProfileDTO update(ProfileDTO dto, Integer id) {
-        ProfileEntity entity = get(id);
+    public ProfileDTO update(ProfileDTO dto, Integer id, AppLanguage appLanguage) {
+        ProfileEntity entity = get(id, appLanguage);
         entity.setName(dto.getName());
         dto.setName(entity.getName());
         entity.setSurname(dto.getSurname());
@@ -57,11 +61,11 @@ public class ProfileService {
         return dto;
     }
 
-    public Boolean delete(Integer id) {
-        ProfileEntity profileEntity = get(id);
+    public Boolean delete(Integer id, AppLanguage appLanguage) {
+        ProfileEntity profileEntity = get(id, appLanguage);
         Integer effectiveRows = profileRepository.deleteByIdProfile(profileEntity.getId());
         if (effectiveRows == 0) {
-            throw new AppBadException("Profile not found");
+            throw new AppBadException(resourceBundleService.getMessage("profile.not.found", appLanguage));
         }
         return true;
     }
@@ -85,15 +89,15 @@ public class ProfileService {
         return dto;
     }
 
-    private ProfileEntity get(Integer id) {
-        return profileRepository.findById(id).orElseThrow(() -> new AppBadException("Profile not found"));
+    private ProfileEntity get(Integer id, AppLanguage appLanguage) {
+        return profileRepository.findById(id).orElseThrow(() -> new AppBadException(resourceBundleService.getMessage("profile.not.found", appLanguage)));
     }
 
 
-    public ProfileDTO updateDetail(ProfileDTO dto, Integer id) {
-        ProfileEntity entity = get(id);
+    public ProfileDTO updateDetail(ProfileDTO dto, Integer id, AppLanguage appLanguage) {
+        ProfileEntity entity = get(id, appLanguage);
         if (entity == null) {
-            throw new AppBadException("Profile not found");
+            throw new AppBadException(resourceBundleService.getMessage("profile.not.found", appLanguage));
         }
         if (dto.getName() != null) {
             entity.setName(dto.getName());

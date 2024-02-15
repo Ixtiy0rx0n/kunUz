@@ -21,13 +21,14 @@ public class ArticleLikeEntity{
     private LocalDateTime createdDate;
     @Column(name = "visible")
     private Boolean visible = true;
+    @Column(name = "status")
     private ArticleLikeStatus status;
 
     @Column(name = "article_id")
     private String articleId;
     @ManyToOne
     @JoinColumn(name = "article_id", insertable = false, updatable = false)
-    private ProfileEntity article;
+    private ArticleEntity article;
 
     @Column(name = "profile_id")
     private Integer profileId;

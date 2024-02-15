@@ -1,30 +1,28 @@
 ### Create
 POST http://localhost:8080/comment/create
 Content-Type: application/json
-Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDc4NTQyMTgsImVtYWlsIjoieGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNzk0MDYxOCwiaXNzIjoiS3VuVXpUZXN0In0.zGHxRqf-xfV7CE6OXwaRnUYmZ0OVoSBnE-0giRhqSAAqMQjC_ACii9pHZmxZ4gbUMHDAFxcEpUsx4cURibrlBg
 
 {
-
-  "profileId": 2,
-  "content": "Yaxshi izoh",
-  "articleId": "b1907197-5dd8-4501-b2cb-721a16cb899e"
+  "profileId": 3,
+  "content": "yangi  izoh",
+  "articleId": "b1907197-5dd8-4501-b2cb-721a16cb799e"
 }
 
 ### Update
-PUT http://localhost:8080/comment/update/1
+PUT http://localhost:8080/comment/update/5
 Content-Type: application/json
-Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDc4NTQyMTgsImVtYWlsIjoieGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNzk0MDYxOCwiaXNzIjoiS3VuVXpUZXN0In0.zGHxRqf-xfV7CE6OXwaRnUYmZ0OVoSBnE-0giRhqSAAqMQjC_ACii9pHZmxZ4gbUMHDAFxcEpUsx4cURibrlBg
 
 {
-  "profileId": 2,
-  "articleId": "b1907197-5dd8-4501-b2cb-721a16cb899e",
-  "content": "uchinchi marta yangilangan izoh"
+  "profileId": 3,
+  "articleId": "b1907197-5dd8-4501-b2cb-721a16cb799e",
+  "content": "Yangi update"
 }
 
 ### Delete
-DELETE http://localhost:8080/comment/adm/1
-Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=
-
+DELETE http://localhost:8080/comment/adm/5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDc4NTQyMTgsImVtYWlsIjoieGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNzk0MDYxOCwiaXNzIjoiS3VuVXpUZXN0In0.zGHxRqf-xfV7CE6OXwaRnUYmZ0OVoSBnE-0giRhqSAAqMQjC_ACii9pHZmxZ4gbUMHDAFxcEpUsx4cURibrlBg
 ###Get Article Comments
 GET http://localhost:8080/comment/allarticlecomment/b1907197-5dd8-4501-b2cb-721a16cb899e
-Authorization: Basic eGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb206MTIzNDU=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDc4NTQyMTgsImVtYWlsIjoieGFiaWJ1bGxveWV2aXh0aXlvcnhvbkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImV4cCI6MTcwNzk0MDYxOCwiaXNzIjoiS3VuVXpUZXN0In0.zGHxRqf-xfV7CE6OXwaRnUYmZ0OVoSBnE-0giRhqSAAqMQjC_ACii9pHZmxZ4gbUMHDAFxcEpUsx4cURibrlBg

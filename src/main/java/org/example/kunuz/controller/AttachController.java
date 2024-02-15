@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.example.kunuz.dto.AttachDTO;
+import org.example.kunuz.enums.AppLanguage;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.service.AttachService;
 import org.example.kunuz.util.HttpRequestUtil;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 @Slf4j
@@ -38,10 +40,12 @@ public class AttachController {
 
     @Operation( summary = "Attach open", description = "Attach(file)ni ochish")
     @GetMapping(value = "/open/{fileName}", produces = MediaType.IMAGE_PNG_VALUE)
-    public byte[] open(@PathVariable("fileName") String fileName) {
+    public byte[] open(@PathVariable("fileName") String fileName,
+                       @RequestHeader(value = "Accept-Language", defaultValue = "uz")
+                       AppLanguage appLanguage) {
         if (fileName != null && fileName.length() > 0) {
             try {
-                return this.attachService.loadImage(fileName);
+                return this.attachService.loadImage(fileName, appLanguage);
             } catch (Exception e) {
                 e.printStackTrace();
                 return new byte[0];
@@ -64,11 +68,14 @@ public class AttachController {
     }
     @Operation( summary = "Attach yuklash", description = "Attach(file)ni yuklash")
     @GetMapping("/download/{fineName}")
-    public ResponseEntity<Resource> download(@PathVariable("fineName") String fileName) {
-        return attachService.download(fileName);
+    public ResponseEntity<Resource> download(@PathVariable("fineName") String fileName,
+                                             @RequestHeader(value = "Accept-Language", defaultValue = "uz")
+                                             AppLanguage appLanguage) {
+        return attachService.download(fileName,appLanguage);
     }
 
     @DeleteMapping("/delete/{filename}")
+    @PreAuthorize("hasRole('ADMIN')")
     @Operation( summary = "Attach delete", description = "Attach(file)ni o'chirish")
     public ResponseEntity<String> deleteFile(@PathVariable String filename){
         String message = "";

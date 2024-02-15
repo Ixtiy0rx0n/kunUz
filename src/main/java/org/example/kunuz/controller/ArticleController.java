@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.example.kunuz.dto.ArticleCreateDTO;
-import org.example.kunuz.dto.RegionDTO;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.service.ArticleService;
 import org.example.kunuz.util.HttpRequestUtil;
@@ -21,7 +20,7 @@ public class ArticleController {
     @PostMapping("/adm/create")// Region Yaratish
     public ResponseEntity<ArticleCreateDTO> create(@Valid @RequestBody ArticleCreateDTO dto,
                                             HttpServletRequest request){
-        Integer id = HttpRequestUtil.getProfileId(request, ProfileRole.ADMIN);
+        Integer id = HttpRequestUtil.getProfileId(request, ProfileRole.ROLE_ADMIN);
         return ResponseEntity.ok(articleService.create(dto,id));
     }
 }
