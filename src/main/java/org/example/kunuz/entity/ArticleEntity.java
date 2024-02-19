@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.example.kunuz.enums.ArticleStatus;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Table(name = "article")
 public class ArticleEntity {
     @Id
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     @Column(nullable = false)
@@ -60,6 +62,17 @@ public class ArticleEntity {
 
     @Column(name = "visible")
     private boolean visible = true;
+
+    @Column(name = "like_count")
+    private Integer likeCount=0;
+
+    @Column(name = "dislike_count")
+    private Integer dislikeCount=0;
+
+    @Column(name = "created_date")
+    private LocalDateTime createdDate = LocalDateTime.now();
+    private LocalDateTime publishedDate;
+
  /*   @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryEntity category;

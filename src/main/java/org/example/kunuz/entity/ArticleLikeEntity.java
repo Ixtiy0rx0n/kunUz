@@ -16,12 +16,12 @@ public class ArticleLikeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @Column(name = "created_date")
     private LocalDateTime createdDate;
     @Column(name = "visible")
     private Boolean visible = true;
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private ArticleLikeStatus status;
 
     @Column(name = "article_id")

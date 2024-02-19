@@ -1,26 +1,118 @@
 package org.example.kunuz.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.example.kunuz.dto.ArticleCreateDTO;
+import org.example.kunuz.dto.*;
 import org.example.kunuz.enums.ProfileRole;
 import org.example.kunuz.service.ArticleService;
 import org.example.kunuz.util.HttpRequestUtil;
+import org.example.kunuz.util.SpringSecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
     @Autowired
-    ArticleService articleService;
+    private ArticleService articleService;
 
-    @PostMapping("/adm/create")// Region Yaratish
-    public ResponseEntity<ArticleCreateDTO> create(@Valid @RequestBody ArticleCreateDTO dto,
-                                            HttpServletRequest request){
-        Integer id = HttpRequestUtil.getProfileId(request, ProfileRole.ROLE_ADMIN);
-        return ResponseEntity.ok(articleService.create(dto,id));
+    @Operation(summary = "Api for create", description = "this api used for create article")
+    @PostMapping("")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public ResponseEntity<?> create(@RequestBody CreateArticleDTO dto) {
+        log.info("create article{}", dto.getTitle());
+        Integer moderatorId = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(articleService.create(dto, moderatorId));
+    }
+
+    @Operation(summary = "Api for update", description = "this api used for update article")
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public ResponseEntity<?> update(@RequestBody CreateArticleDTO dto,
+                                    @PathVariable String id) {
+        log.info("update article{}", dto.getTitle());
+        Integer moderatorId = SpringSecurityUtil.getCurrentUser().getId();
+        return ResponseEntity.ok(articleService.update(dto, moderatorId, id));
+    }
+
+    @Operation(summary = "Api for delete", description = "this api used for delete by id article")
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public ResponseEntity<?> delete(@PathVariable String id) {
+        log.info("delete article by id {}", id);
+        return ResponseEntity.ok(articleService.delete(id));
+    }
+
+    @Operation(summary = "Api for changeStatusById", description = "this api used for change status by id article")
+    @PutMapping("change/{id}")
+    @PreAuthorize("hasRole('PUBLISHER')")
+    public ResponseEntity<?> changeStatusById(@PathVariable("id") String id) {
+        log.info("get article by id {}", id);
+        return ResponseEntity.ok(articleService.update(id));
+    }
+
+    @Operation(summary = "Api for getLastFiveArticleByTypes", description = "Returns the last 5 published articles of the given type")
+    @GetMapping("/typeId/id")
+    public ResponseEntity<?> getLastFiveArticleByTypes(@RequestParam Integer id, @RequestParam Integer size) {
+        log.info("get last five article by types {}", id);
+        return ResponseEntity.ok(articleService.getLastFiveArticleByTypes(id, size));
+    }
+
+
+    @Operation(summary = "Api for getLast8ArticlesNotIncludedInList", description = "Returns the last 8 articles whose ids are not included in the provided list")
+    @PostMapping("/articles")
+    public ResponseEntity<List<ArticleFullInfoDTO>> getLast8ArticlesNotIncludedInList(@RequestBody CreateArticleIdListDTO listDTO) {
+        return ResponseEntity.ok(articleService.getLast8ArticlesNotIncludedInList(listDTO.getArticleId()));
+    }
+
+    @Operation(summary = "Api for getLast4ArticlesByTypesExceptGivenId", description = "Returns the last 4 articles of specified type excluding the given article id")
+    @GetMapping("/articleId")
+    public ResponseEntity<List<ArticleFullInfoDTO>> getLast4ArticlesByTypesExceptGivenId(@RequestParam String articleId, @RequestParam Integer arTyId) {
+        return ResponseEntity.ok(articleService.getLast4ArticlesByTypesExceptGivenId(articleId, arTyId));
+    }
+
+
+    @GetMapping("/mostReadArticles") //10
+    public ResponseEntity<?> getMostReadArticles() {
+        return ResponseEntity.ok(articleService.getMostReadArticles());
+    }
+
+    @GetMapping("/articleListByRegionId") //13
+    public ResponseEntity<?> getArticleListByRegionId(@RequestParam Integer id, @RequestParam Integer page, @RequestParam Integer size) {
+        return ResponseEntity.ok(articleService.getArticleListByRegionId(id, page, size));
+    }
+
+    @GetMapping("/last5ArticleCategoryKeys") //14
+    public ResponseEntity<?> getLast5ArticleCategoryKey(@RequestParam Integer id) {
+        return ResponseEntity.ok(articleService.getLast5ArticleCategoryKey(id));
+    }
+
+    @GetMapping("/articlesByCategory")  //15
+    public ResponseEntity<?> getArticlesByCategoryKey(
+            @RequestParam("categoryKey") Integer categoryID,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size) {
+        return ResponseEntity.ok(articleService.getArticlesByCategoryKey(categoryID, page, size));
+    }
+
+
+    @PutMapping("/IncreaseShare/{id}") ///17
+    public ResponseEntity<?> IncreaseShareViewCount(@PathVariable("id") String id) {
+        return ResponseEntity.ok(articleService.IncreaseShareViewCount(id));
+    }
+
+    @PostMapping("/filter")
+    @PreAuthorize("hasRole('PUBLISHER')")
+    public ResponseEntity<?> filter(@RequestBody ArticleFilterDTO dto,
+                                    @RequestParam Integer page,
+                                    @RequestParam Integer size) {
+        return ResponseEntity.ok(articleService.filter(dto, page, size));
     }
 }

@@ -63,4 +63,8 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return status.equals(ProfileStatus.ACTIVE);
     }
+
+    public Integer getId() {
+        return id;
+    }
 }

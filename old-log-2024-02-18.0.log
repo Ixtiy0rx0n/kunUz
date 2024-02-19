@@ -1,0 +1,272 @@
+18 февр. 2024 - 23:38:10 INFO  org.example.kunuz.KunUzApplication - Starting KunUzApplication using Java 17.0.5 with PID 10856 (C:\Ixtiyorxon\Projects\KunUz\KunUz\target\classes started by msigaming in C:\Ixtiyorxon\Projects\KunUz\KunUz)
+18 февр. 2024 - 23:38:10 INFO  org.example.kunuz.KunUzApplication - The following 1 profile is active: "local"
+18 февр. 2024 - 23:38:10 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18 февр. 2024 - 23:38:10 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 10 JPA repository interfaces.
+18 февр. 2024 - 23:38:11 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18 февр. 2024 - 23:38:11 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18 февр. 2024 - 23:38:11 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+18 февр. 2024 - 23:38:11 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18 февр. 2024 - 23:38:11 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1296 ms
+18 февр. 2024 - 23:38:11 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18 февр. 2024 - 23:38:11 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@33eb0d4
+18 февр. 2024 - 23:38:11 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18 февр. 2024 - 23:38:11 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18 февр. 2024 - 23:38:12 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+18 февр. 2024 - 23:38:12 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18 февр. 2024 - 23:38:12 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18 февр. 2024 - 23:38:13 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18 февр. 2024 - 23:38:13 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18 февр. 2024 - 23:38:13 INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+18 февр. 2024 - 23:38:14 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18 февр. 2024 - 23:38:14 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@9af2a00, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@33684b87, org.springframework.security.web.context.SecurityContextHolderFilter@151ce559, org.springframework.security.web.header.HeaderWriterFilter@352b4cf, org.springframework.security.web.authentication.logout.LogoutFilter@4cf5cf47, org.example.kunuz.config.JwtTokenFilter@dfe2875, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5901757, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ab98032, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@50cdaf32, org.springframework.security.web.access.ExceptionTranslationFilter@7efcdcde, org.springframework.security.web.access.intercept.AuthorizationFilter@4de5d46c]
+18 февр. 2024 - 23:38:14 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+18 февр. 2024 - 23:38:14 INFO  org.example.kunuz.KunUzApplication - Started KunUzApplication in 5.162 seconds (process running for 5.809)
+18 февр. 2024 - 23:38:15 INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 9.22.3 by Redgate
+18 февр. 2024 - 23:38:15 INFO  o.f.c.i.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+18 февр. 2024 - 23:38:15 INFO  o.f.c.i.license.VersionPrinter - 
+18 февр. 2024 - 23:38:15 INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/kunUz (PostgreSQL 15.3)
+18 февр. 2024 - 23:38:15 INFO  o.f.core.internal.command.DbValidate - Successfully validated 5 migrations (execution time 00:00.028s)
+18 февр. 2024 - 23:38:15 INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 4
+18 февр. 2024 - 23:38:15 INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+18 февр. 2024 - 23:40:19 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18 февр. 2024 - 23:40:19 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18 февр. 2024 - 23:40:19 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18 февр. 2024 - 23:40:24 INFO  org.example.kunuz.KunUzApplication - Starting KunUzApplication using Java 17.0.5 with PID 19012 (C:\Ixtiyorxon\Projects\KunUz\KunUz\target\classes started by msigaming in C:\Ixtiyorxon\Projects\KunUz\KunUz)
+18 февр. 2024 - 23:40:24 INFO  org.example.kunuz.KunUzApplication - The following 1 profile is active: "local"
+18 февр. 2024 - 23:40:24 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18 февр. 2024 - 23:40:24 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 10 JPA repository interfaces.
+18 февр. 2024 - 23:40:25 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18 февр. 2024 - 23:40:25 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18 февр. 2024 - 23:40:25 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+18 февр. 2024 - 23:40:25 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18 февр. 2024 - 23:40:25 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1081 ms
+18 февр. 2024 - 23:40:25 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18 февр. 2024 - 23:40:25 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5396eeb1
+18 февр. 2024 - 23:40:25 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18 февр. 2024 - 23:40:25 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18 февр. 2024 - 23:40:25 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+18 февр. 2024 - 23:40:25 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18 февр. 2024 - 23:40:25 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18 февр. 2024 - 23:40:26 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18 февр. 2024 - 23:40:26 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18 февр. 2024 - 23:40:26 INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+18 февр. 2024 - 23:40:27 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18 февр. 2024 - 23:40:27 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3d44f15d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@674c9079, org.springframework.security.web.context.SecurityContextHolderFilter@1a5e19fe, org.springframework.security.web.header.HeaderWriterFilter@3983b06d, org.springframework.security.web.authentication.logout.LogoutFilter@6f3cf9ac, org.example.kunuz.config.JwtTokenFilter@73e0c775, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@222b4ab1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7df09f55, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b5854a7, org.springframework.security.web.access.ExceptionTranslationFilter@efa6a81, org.springframework.security.web.access.intercept.AuthorizationFilter@119b837]
+18 февр. 2024 - 23:40:28 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+18 февр. 2024 - 23:40:28 INFO  org.example.kunuz.KunUzApplication - Started KunUzApplication in 4.265 seconds (process running for 4.802)
+18 февр. 2024 - 23:40:28 INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 9.22.3 by Redgate
+18 февр. 2024 - 23:40:28 INFO  o.f.c.i.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+18 февр. 2024 - 23:40:28 INFO  o.f.c.i.license.VersionPrinter - 
+18 февр. 2024 - 23:40:28 INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/kunUz (PostgreSQL 15.3)
+18 февр. 2024 - 23:40:28 INFO  o.f.core.internal.command.DbValidate - Successfully validated 5 migrations (execution time 00:00.017s)
+18 февр. 2024 - 23:40:28 INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 4
+18 февр. 2024 - 23:40:28 INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+18 февр. 2024 - 23:46:10 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18 февр. 2024 - 23:46:10 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18 февр. 2024 - 23:46:10 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18 февр. 2024 - 23:46:14 INFO  org.example.kunuz.KunUzApplication - Starting KunUzApplication using Java 17.0.5 with PID 4116 (C:\Ixtiyorxon\Projects\KunUz\KunUz\target\classes started by msigaming in C:\Ixtiyorxon\Projects\KunUz\KunUz)
+18 февр. 2024 - 23:46:14 INFO  org.example.kunuz.KunUzApplication - The following 1 profile is active: "local"
+18 февр. 2024 - 23:46:14 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18 февр. 2024 - 23:46:14 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 10 JPA repository interfaces.
+18 февр. 2024 - 23:46:15 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18 февр. 2024 - 23:46:15 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18 февр. 2024 - 23:46:15 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+18 февр. 2024 - 23:46:15 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18 февр. 2024 - 23:46:15 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1135 ms
+18 февр. 2024 - 23:46:15 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18 февр. 2024 - 23:46:15 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@33324c05
+18 февр. 2024 - 23:46:15 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18 февр. 2024 - 23:46:15 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18 февр. 2024 - 23:46:15 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+18 февр. 2024 - 23:46:15 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18 февр. 2024 - 23:46:15 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18 февр. 2024 - 23:46:16 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18 февр. 2024 - 23:46:16 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists article_like alter column status set data type varchar(255)" via JDBC [ОШИБКА: оператор не существует: character varying >= integer
+  Подсказка: Оператор с данными именем и типами аргументов не найден. Возможно, вам следует добавить явные приведения типов.]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists article_like alter column status set data type varchar(255)" via JDBC [ОШИБКА: оператор не существует: character varying >= integer
+  Подсказка: Оператор с данными именем и типами аргументов не найден. Возможно, вам следует добавить явные приведения типов.]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:514)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333)
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:286)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:145)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:142)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:685)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1164)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1684)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1433)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1418)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1418)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:210)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:173)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:168)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:153)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4866)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:845)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:240)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:433)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:917)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:488)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:126)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:105)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:499)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:218)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:618)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at org.example.kunuz.KunUzApplication.main(KunUzApplication.java:10)
+Caused by: org.postgresql.util.PSQLException: ОШИБКА: оператор не существует: character varying >= integer
+  Подсказка: Оператор с данными именем и типами аргументов не найден. Возможно, вам следует добавить явные приведения типов.
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2713)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2401)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:368)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:498)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:415)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:335)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:321)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:297)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:292)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 123 common frames omitted
+18 февр. 2024 - 23:46:16 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18 февр. 2024 - 23:46:16 INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+18 февр. 2024 - 23:46:17 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18 февр. 2024 - 23:46:17 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5cfcb55c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@416dd4d8, org.springframework.security.web.context.SecurityContextHolderFilter@4cf5cf47, org.springframework.security.web.header.HeaderWriterFilter@3d44f15d, org.springframework.security.web.authentication.logout.LogoutFilter@2dd25088, org.example.kunuz.config.JwtTokenFilter@3285c141, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@556d8c78, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3c79071e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2dca3c72, org.springframework.security.web.access.ExceptionTranslationFilter@119b837, org.springframework.security.web.access.intercept.AuthorizationFilter@7a12cb2c]
+18 февр. 2024 - 23:46:18 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+18 февр. 2024 - 23:46:18 INFO  org.example.kunuz.KunUzApplication - Started KunUzApplication in 4.301 seconds (process running for 4.792)
+18 февр. 2024 - 23:46:18 INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 9.22.3 by Redgate
+18 февр. 2024 - 23:46:18 INFO  o.f.c.i.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+18 февр. 2024 - 23:46:18 INFO  o.f.c.i.license.VersionPrinter - 
+18 февр. 2024 - 23:46:18 INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/kunUz (PostgreSQL 15.3)
+18 февр. 2024 - 23:46:18 INFO  o.f.core.internal.command.DbValidate - Successfully validated 5 migrations (execution time 00:00.016s)
+18 февр. 2024 - 23:46:18 INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 4
+18 февр. 2024 - 23:46:18 INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
+18 февр. 2024 - 23:47:01 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18 февр. 2024 - 23:47:01 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18 февр. 2024 - 23:47:01 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18 февр. 2024 - 23:47:03 INFO  org.example.kunuz.KunUzApplication - Starting KunUzApplication using Java 17.0.5 with PID 3368 (C:\Ixtiyorxon\Projects\KunUz\KunUz\target\classes started by msigaming in C:\Ixtiyorxon\Projects\KunUz\KunUz)
+18 февр. 2024 - 23:47:03 INFO  org.example.kunuz.KunUzApplication - The following 1 profile is active: "local"
+18 февр. 2024 - 23:47:04 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18 февр. 2024 - 23:47:04 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 46 ms. Found 10 JPA repository interfaces.
+18 февр. 2024 - 23:47:04 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18 февр. 2024 - 23:47:04 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+18 февр. 2024 - 23:47:04 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+18 февр. 2024 - 23:47:04 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18 февр. 2024 - 23:47:04 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1001 ms
+18 февр. 2024 - 23:47:04 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18 февр. 2024 - 23:47:04 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@224d86d2
+18 февр. 2024 - 23:47:04 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18 февр. 2024 - 23:47:04 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18 февр. 2024 - 23:47:04 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+18 февр. 2024 - 23:47:04 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18 февр. 2024 - 23:47:05 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18 февр. 2024 - 23:47:05 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18 февр. 2024 - 23:47:05 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18 февр. 2024 - 23:47:06 INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+18 февр. 2024 - 23:47:06 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18 февр. 2024 - 23:47:06 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@623dac3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@625439ba, org.springframework.security.web.context.SecurityContextHolderFilter@556df144, org.springframework.security.web.header.HeaderWriterFilter@2395c168, org.springframework.security.web.authentication.logout.LogoutFilter@7b900883, org.example.kunuz.config.JwtTokenFilter@3d95100f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@618b147b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2246bfd1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2763500e, org.springframework.security.web.access.ExceptionTranslationFilter@5a618847, org.springframework.security.web.access.intercept.AuthorizationFilter@b09df69]
+18 февр. 2024 - 23:47:07 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+18 февр. 2024 - 23:47:07 INFO  org.example.kunuz.KunUzApplication - Started KunUzApplication in 3.96 seconds (process running for 4.43)
+18 февр. 2024 - 23:47:07 INFO  o.f.c.i.license.VersionPrinter - Flyway Community Edition 9.22.3 by Redgate
+18 февр. 2024 - 23:47:07 INFO  o.f.c.i.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+18 февр. 2024 - 23:47:07 INFO  o.f.c.i.license.VersionPrinter - 
+18 февр. 2024 - 23:47:07 INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:postgresql://localhost:5432/kunUz (PostgreSQL 15.3)
+18 февр. 2024 - 23:47:07 INFO  o.f.core.internal.command.DbValidate - Successfully validated 5 migrations (execution time 00:00.014s)
+18 февр. 2024 - 23:47:07 INFO  o.f.core.internal.command.DbMigrate - Current version of schema "public": 4
+18 февр. 2024 - 23:47:07 INFO  o.f.core.internal.command.DbMigrate - Schema "public" is up to date. No migration necessary.
