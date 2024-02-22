@@ -18,14 +18,16 @@ public class ArticleEntity {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
-    @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
     private String description;
-    @Column(nullable = false, columnDefinition = "text")
     private String content;
-    @Column(nullable = false, name = "shared_count")
-    private Integer sharedCount = 0;
+    private Integer sharedCount=0;
+
+    @Column(name = "image_id")
+    private String imageId;
+    @ManyToOne
+    @JoinColumn(name = "image_id", insertable = false, updatable = false)
+    private AttachEntity image;
 
     @Column(name = "region_id")
     private Integer regionId;
@@ -33,45 +35,33 @@ public class ArticleEntity {
     @JoinColumn(name = "region_id", insertable = false, updatable = false)
     private RegionEntity region;
 
+    @Column(name = "category_id")
+    private Integer categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    private CategoryEntity category;
+
     @Column(name = "moderator_id")
     private Integer moderatorId;
     @ManyToOne
-    @JoinColumn(name = "moderator_id", nullable = false,insertable = false, updatable = false)
+    @JoinColumn(name = "moderator_id", updatable = false, insertable = false)
     private ProfileEntity moderator;
 
     @Column(name = "publisher_id")
     private Integer publisherId;
     @ManyToOne
-    @JoinColumn(name = "publisher_id",insertable = false, updatable = false)
+    @JoinColumn(name = "publisher_id", updatable = false, insertable = false)
     private ProfileEntity publisher;
+    @Enumerated(EnumType.STRING)
+    private ArticleStatus status = ArticleStatus.NOT_PUBLISHER;
 
-    @Column(name = "category_id")
-    private Integer categoryId;
-    @ManyToOne
-    @JoinColumn(name = "category_id",insertable = false, updatable = false)
-    private CategoryEntity category;
-
-    @Column(name = "photo_id")
-    private String photoId;
-    @ManyToOne
-    @JoinColumn(name = "photo_id", nullable = false,insertable = false, updatable = false)
-    private AttachEntity photo;
-
-    @Column(name = "status")
-    private ArticleStatus status;
-
-    @Column(name = "visible")
-    private boolean visible = true;
-
-    @Column(name = "like_count")
-    private Integer likeCount=0;
-
-    @Column(name = "dislike_count")
-    private Integer dislikeCount=0;
-
-    @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
+
     private LocalDateTime publishedDate;
+
+    private Boolean visible = true;
+
+    private Integer viewCount = 0;
 
  /*   @ManyToOne
     @JoinColumn(name = "category_id")

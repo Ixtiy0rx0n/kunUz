@@ -19,5 +19,5 @@ public class NewArticleTypeEntity extends BaseEntity {
     private Integer articleTypeId;
     @ManyToOne
     @JoinColumn(name = "article_type_id", insertable = false, updatable = false)
-    private com.example.entity.ArticleTypeEntity articleType;
+    private ArticleTypeEntity articleType;
 }

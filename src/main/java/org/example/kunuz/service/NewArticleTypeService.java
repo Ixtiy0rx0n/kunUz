@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -43,17 +44,11 @@ public class NewArticleTypeService {
             }
             if (count == 0) {
                 newArticleTypeRepository.deleteEn(newArticleTypeEntity.getArticleId(), newArticleTypeEntity.getArticleTypeId());
-            }else {
-                newArticleTypeRepository.updateDate(LocalDateTime.now(),newArticleTypeEntity.getArticleId(), newArticleTypeEntity.getArticleTypeId());
+            } else {
+                newArticleTypeRepository.updateDate(LocalDateTime.now(), newArticleTypeEntity.getArticleId(), newArticleTypeEntity.getArticleTypeId());
                 newList.remove(newArticleTypeEntity.getArticleTypeId());
             }
 
-        }
-        for (Integer integer : newList) {
-            NewArticleTypeEntity entity = new NewArticleTypeEntity();
-            entity.setArticleId(articleId);
-            entity.setArticleTypeId(integer);
-            newArticleTypeRepository.save(entity);
         }
     }
 }

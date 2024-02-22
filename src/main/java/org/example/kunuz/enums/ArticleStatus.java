@@ -1,5 +1,5 @@
 package org.example.kunuz.enums;
 
 public enum ArticleStatus {
-    Published, NotPublished
+    Published, NotPublished, NOT_PUBLISHER
 }

@@ -37,3 +37,6 @@ build/
 /attaches/@uzbekistansclubfan.mp4
 
 /uploads/2024/
+src/main/resources/application-local.properties
+/attaches/
+/uploads/
